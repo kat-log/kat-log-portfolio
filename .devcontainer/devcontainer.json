@@ -12,7 +12,8 @@
       "extensions": [
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
-        "eamodio.gitlens"
+        "eamodio.gitlens",
+        "anthropic.claude-code"
       ],
       "settings": {
         "editor.formatOnSave": true,
@@ -33,6 +34,13 @@
       }
     }
   },
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Next.js Dev Server",
+      "onAutoForward": "openBrowser"
+    }
+  },
   "remoteUser": "node",
   "mounts": [
     "source=claude-code-bashhistory-${devcontainerId},target=/commandhistory,type=volume",
@@ -43,7 +51,7 @@
     "CLAUDE_CONFIG_DIR": "/home/node/.claude",
     "PATH": "${containerEnv:PATH}:/home/node/.local/bin"
   },
-  "postCreateCommand": "bash -li /workspace/.devcontainer/install-usage-monitor.sh",
+  "postCreateCommand": "bash -li /workspace/.devcontainer/install-usage-monitor.sh && npm install -g pnpm && pnpm install",
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=delegated",
   "workspaceFolder": "/workspace"
   // "postCreateCommand": "sudo /usr/local/bin/init-firewall.sh"
