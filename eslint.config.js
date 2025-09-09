@@ -18,8 +18,6 @@ const config = [
       "node_modules/**",
       "out/**",
       "public/**",
-      "*.config.js",
-      "*.config.ts",
       "next-env.d.ts"
     ],
   },
