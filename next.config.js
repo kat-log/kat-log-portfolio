@@ -3,4 +3,4 @@ const nextConfig = {
   typedRoutes: true,
 }
 
-module.exports = nextConfig
+export default nextConfig
