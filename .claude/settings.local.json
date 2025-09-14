@@ -10,7 +10,8 @@
       "Bash(mkdir:*)",
       "Bash(gh issue:*)",
       "Bash(pnpm build:*)",
-      "Bash(pnpm list:*)"
+      "Bash(pnpm list:*)",
+      "Bash(pnpm dlx:*)"
     ],
     "deny": []
   }
