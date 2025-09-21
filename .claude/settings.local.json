@@ -11,7 +11,9 @@
       "Bash(gh issue:*)",
       "Bash(pnpm build:*)",
       "Bash(pnpm list:*)",
-      "Bash(pnpm dlx:*)"
+      "Bash(pnpm dlx:*)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_install"
     ],
     "deny": []
   }
