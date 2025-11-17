@@ -3,6 +3,8 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { ProjectCard } from "@/components/features/ProjectCard"
+import { projects } from "@/data/projects"
 
 export default function ComponentsTestPage() {
   return (
@@ -105,6 +107,43 @@ export default function ComponentsTestPage() {
             </CardContent>
           </Card>
         </div>
+      </section>
+
+      {/* ProjectCard Tests */}
+      <section className="space-y-6">
+        <h2 className="text-3xl font-semibold border-b pb-2">ProjectCard コンポーネント</h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              onClick={(project) => {
+                console.log('Project clicked:', project.title)
+                alert(`クリックされたプロジェクト: ${project.title}`)
+              }}
+            />
+          ))}
+        </div>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>ProjectCard 機能テスト</CardTitle>
+            <CardDescription>実装された機能のチェックリスト</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ul className="list-disc list-inside space-y-2 text-sm">
+              <li>✅ プロジェクトデータの表示（タイトル、説明、日付）</li>
+              <li>✅ サムネイル画像の表示とホバーズーム</li>
+              <li>✅ Featuredバッジの表示</li>
+              <li>✅ 技術スタックタグの表示（最大4つ + カウント）</li>
+              <li>✅ GitHub/Demo/Storeリンクボタン</li>
+              <li>✅ カードホバーアニメーション（上昇エフェクト）</li>
+              <li>✅ レスポンシブデザイン（1/2/3カラム）</li>
+              <li>✅ クリックイベントハンドラー</li>
+            </ul>
+          </CardContent>
+        </Card>
       </section>
 
       {/* Badge Tests */}
