@@ -1,4 +1,5 @@
 import typography from "@tailwindcss/typography";
+import animate from "tailwindcss-animate";
 
 /** @type {import('tailwindcss').Config} */
 const config = {
@@ -39,6 +40,7 @@ const config = {
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
+          // ...
         },
         card: {
           DEFAULT: "hsl(var(--card))",
@@ -52,7 +54,7 @@ const config = {
       },
     },
   },
-  plugins: [typography, require("tailwindcss-animate")],
+  plugins: [typography, animate],
 };
 
 export default config;
