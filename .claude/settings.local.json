@@ -14,7 +14,8 @@
       "Bash(pnpm dlx:*)",
       "mcp__playwright__browser_navigate",
       "mcp__playwright__browser_install",
-      "Read(//Users/yamadatarou/Library/CloudStorage/GoogleDrive-greentea.tomatosystem@gmail.com/My Drive/Mac_ScreenShots・キャプチャ/M2MacbookAir2024-06-13〜/**)"
+      "Read(//Users/yamadatarou/Library/CloudStorage/GoogleDrive-greentea.tomatosystem@gmail.com/My Drive/Mac_ScreenShots・キャプチャ/M2MacbookAir2024-06-13〜/**)",
+      "Bash(git checkout:*)"
     ],
     "deny": []
   }
