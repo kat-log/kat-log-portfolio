@@ -17,8 +17,8 @@ export const projects: Project[] = [
       demo: 'https://e-commerce-demo.vercel.app'
     },
     screenshots: [
-      '/images/projects/e-commerce/hero.jpg',
-      '/images/projects/e-commerce/products.jpg'
+      'https://placehold.co/800x600/6366f1/ffffff.png?text=Ecommerce',
+      'https://placehold.co/800x600/8b5cf6/ffffff.png?text=Products'
     ],
     featured: true,
     date: '2025-06',
@@ -40,8 +40,8 @@ export const projects: Project[] = [
       demo: 'https://task-manager-demo.netlify.app'
     },
     screenshots: [
-      '/images/projects/task-manager/dashboard.jpg',
-      '/images/projects/task-manager/board.jpg'
+      'https://placehold.co/800x600/ec4899/ffffff.png?text=Dashboard',
+      'https://placehold.co/800x600/f43f5e/ffffff.png?text=Kanban'
     ],
     featured: true,
     date: '2025-04',
@@ -59,8 +59,8 @@ export const projects: Project[] = [
       store: 'https://chrome.google.com/webstore/detail/productivity-helper'
     },
     screenshots: [
-      '/images/projects/extension/popup.jpg',
-      '/images/projects/extension/settings.jpg'
+      'https://placehold.co/800x600/14b8a6/ffffff.png?text=Extension',
+      'https://placehold.co/800x600/06b6d4/ffffff.png?text=Settings'
     ],
     featured: false,
     date: '2025-03',

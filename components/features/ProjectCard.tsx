@@ -41,7 +41,7 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.4, ease: 'easeOut' }}
-              className="w-full h-full"
+              className="relative w-full h-full"
             >
               <Image
                 src={thumbnail}
