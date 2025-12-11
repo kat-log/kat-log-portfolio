@@ -1,7 +1,26 @@
+'use client'
+
+import { useState } from 'react'
 import { ProjectGrid } from '@/components/features/ProjectGrid'
+import { ProjectModal } from '@/components/features/ProjectModal'
 import { projects } from '@/data/projects'
+import { Project } from '@/types'
 
 export default function Home() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleProjectClick = (project: Project) => {
+    setSelectedProject(project)
+    setIsModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    // アニメーション完了後にプロジェクトをクリア
+    setTimeout(() => setSelectedProject(null), 300)
+  }
+
   return (
     <main className="min-h-screen">
       {/* ヒーローセクション */}
@@ -26,9 +45,16 @@ export default function Home() {
             </p>
           </div>
 
-          <ProjectGrid projects={projects} />
+          <ProjectGrid projects={projects} onProjectClick={handleProjectClick} />
         </div>
       </section>
+
+      {/* プロジェクト詳細モーダル */}
+      <ProjectModal
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
     </main>
   )
 }
