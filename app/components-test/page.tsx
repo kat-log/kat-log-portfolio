@@ -4,7 +4,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ProjectCard } from "@/components/features/ProjectCard"
+import { SkillCard } from "@/components/features/SkillCard"
 import { projects } from "@/data/projects"
+import { skills } from "@/data/skills"
 
 export default function ComponentsTestPage() {
   return (
@@ -141,6 +143,35 @@ export default function ComponentsTestPage() {
               <li>✅ カードホバーアニメーション（上昇エフェクト）</li>
               <li>✅ レスポンシブデザイン（1/2/3カラム）</li>
               <li>✅ クリックイベントハンドラー</li>
+            </ul>
+          </CardContent>
+        </Card>
+      </section>
+
+      {/* SkillCard Tests */}
+      <section className="space-y-6">
+        <h2 className="text-3xl font-semibold border-b pb-2">SkillCard コンポーネント</h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {skills.map((skill, index) => (
+            <SkillCard key={index} skill={skill} />
+          ))}
+        </div>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>SkillCard 機能テスト</CardTitle>
+            <CardDescription>実装された機能のチェックリスト</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ul className="list-disc list-inside space-y-2 text-sm">
+              <li>✅ スキル名の表示</li>
+              <li>✅ スキルレベルバッジの表示</li>
+              <li>✅ 5段階レベルバーの表示</li>
+              <li>✅ レベルに応じた色分け（グレー/黄/青/緑）</li>
+              <li>✅ アイコン表示（オプション）</li>
+              <li>✅ カードホバーアニメーション</li>
+              <li>✅ レスポンシブデザイン（1/2/4カラム）</li>
             </ul>
           </CardContent>
         </Card>
