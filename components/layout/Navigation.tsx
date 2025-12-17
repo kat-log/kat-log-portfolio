@@ -15,7 +15,7 @@ export function Navigation() {
           <li key={link.href}>
             <Link
               href={link.href}
-              className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
+              className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
             >
               {link.label}
             </Link>
