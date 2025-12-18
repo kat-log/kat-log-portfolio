@@ -2,10 +2,12 @@
 
 import { useState, useMemo } from 'react'
 import { HeroSection } from '@/components/features/HeroSection'
+import { AboutSection } from '@/components/features/AboutSection'
 import { ProjectGrid } from '@/components/features/ProjectGrid'
 import { ProjectModal } from '@/components/features/ProjectModal'
 import { FilterBar } from '@/components/features/FilterBar'
 import { projects } from '@/data/projects'
+import { profile } from '@/data/profile'
 import { Project, ProjectTag } from '@/types'
 
 export default function Home() {
@@ -40,6 +42,9 @@ export default function Home() {
     <main className="min-h-screen">
       {/* ヒーローセクション */}
       <HeroSection />
+
+      {/* 自己紹介セクション */}
+      <AboutSection profile={profile} />
 
       {/* プロジェクト一覧セクション */}
       <section id="projects-section" className="py-12 px-4 md:py-16">
