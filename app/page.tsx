@@ -3,6 +3,7 @@
 import { useState, useMemo } from 'react'
 import { HeroSection } from '@/components/features/HeroSection'
 import { AboutSection } from '@/components/features/AboutSection'
+import { FeaturedProjects } from '@/components/features/FeaturedProjects'
 import { ProjectGrid } from '@/components/features/ProjectGrid'
 import { ProjectModal } from '@/components/features/ProjectModal'
 import { FilterBar } from '@/components/features/FilterBar'
@@ -45,6 +46,9 @@ export default function Home() {
 
       {/* 自己紹介セクション */}
       <AboutSection profile={profile} />
+
+      {/* 注目プロジェクトセクション */}
+      <FeaturedProjects projects={projects} onProjectClick={handleProjectClick} />
 
       {/* プロジェクト一覧セクション */}
       <section id="projects-section" className="py-12 px-4 md:py-16">
