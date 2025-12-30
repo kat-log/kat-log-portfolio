@@ -100,7 +100,7 @@ export function Navigation() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
-              className="fixed top-0 right-0 bottom-0 w-64 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-xl z-50 md:hidden"
+              className="fixed top-0 right-0 bottom-0 w-64 bg-white dark:bg-gray-900 shadow-xl z-50 md:hidden"
             >
               <div className="flex flex-col h-full">
                 {/* メニューヘッダー */}
