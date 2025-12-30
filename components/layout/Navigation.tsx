@@ -37,8 +37,17 @@ export function Navigation() {
     };
   }, [isOpen]);
 
-  const handleLinkClick = () => {
+  const handleLinkClick = (href: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
     setIsOpen(false);
+
+    // ハッシュリンクの場合はスムーズスクロール
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
   };
 
   return (
@@ -50,6 +59,7 @@ export function Navigation() {
             <li key={link.href}>
               <Link
                 href={link.href}
+                onClick={handleLinkClick(link.href)}
                 className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
               >
                 {link.label}
@@ -90,7 +100,7 @@ export function Navigation() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
-              className="fixed top-0 right-0 bottom-0 w-64 bg-white dark:bg-gray-900 shadow-xl z-50 md:hidden"
+              className="fixed top-0 right-0 bottom-0 w-64 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-xl z-50 md:hidden"
             >
               <div className="flex flex-col h-full">
                 {/* メニューヘッダー */}
@@ -113,7 +123,7 @@ export function Navigation() {
                     <li key={link.href}>
                       <Link
                         href={link.href}
-                        onClick={handleLinkClick}
+                        onClick={handleLinkClick(link.href)}
                         className="block px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
                       >
                         {link.label}
