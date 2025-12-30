@@ -51,7 +51,7 @@ export default function Home() {
       <FeaturedProjects projects={projects} onProjectClick={handleProjectClick} />
 
       {/* プロジェクト一覧セクション */}
-      <section id="projects-section" className="py-12 px-4 md:py-16">
+      <section id="projects" className="py-12 px-4 md:py-16">
         <div className="max-w-7xl mx-auto">
           <div className="mb-8">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Projects</h2>
