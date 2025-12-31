@@ -5,7 +5,7 @@ import { ChevronDown } from 'lucide-react'
 
 export function HeroSection() {
   const handleScrollToProjects = () => {
-    const projectsSection = document.getElementById('projects-section')
+    const projectsSection = document.getElementById('projects')
     if (projectsSection) {
       projectsSection.scrollIntoView({ behavior: 'smooth' })
     }
@@ -94,7 +94,7 @@ export function HeroSection() {
             プロジェクトを見る
           </button>
           <a
-            href="#about"
+            href="/about"
             className="px-8 py-4 border-2 border-gray-400 dark:border-gray-500 text-gray-800 dark:text-gray-200 font-semibold rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
           >
             About Me
