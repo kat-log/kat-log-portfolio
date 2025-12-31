@@ -27,11 +27,6 @@ export const profile: Profile = {
       username: '@yourusername',
     },
     {
-      platform: 'linkedin',
-      url: 'https://linkedin.com/in/yourusername', // TODO: 実際のLinkedInアカウントに置き換え
-      username: 'yourusername',
-    },
-    {
       platform: 'qiita',
       url: 'https://qiita.com/yourusername', // TODO: 実際のQiitaアカウントに置き換え
       username: 'yourusername',

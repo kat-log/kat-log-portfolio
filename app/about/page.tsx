@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 // import Image from 'next/image' // TODO: 実際の画像を使用する際にコメント解除
-import { Github, Linkedin, Mail, MapPin, Twitter } from 'lucide-react'
+import { Mail, MapPin } from 'lucide-react'
+import { siGithub, siX, siQiita } from 'simple-icons'
 import { profile } from '@/data/profile'
 import { getSkillsByCategory } from '@/data/skills'
 import { SkillCard } from '@/components/features/SkillCard'
@@ -11,11 +12,12 @@ export const metadata: Metadata = {
   description: 'Web Developer specializing in modern web technologies',
 }
 
-const socialIcons = {
-  github: Github,
-  x: Twitter,
-  linkedin: Linkedin,
-  qiita: null, // Qiitaはlucide-reactにアイコンがないため、テキストで表示
+type SocialPlatform = 'github' | 'x' | 'qiita';
+
+const socialIcons: Record<SocialPlatform, typeof siGithub> = {
+  github: siGithub,
+  x: siX,
+  qiita: siQiita,
 }
 
 export default function AboutPage() {
@@ -83,7 +85,7 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold mb-6">Connect</h2>
           <div className="flex flex-wrap gap-4">
             {profile.socialLinks.map((link) => {
-              const Icon = socialIcons[link.platform as keyof typeof socialIcons]
+              const icon = socialIcons[link.platform as SocialPlatform]
 
               return (
                 <Button
@@ -99,8 +101,12 @@ export default function AboutPage() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2"
                   >
-                    {Icon && <Icon className="w-5 h-5" />}
-                    <span className="capitalize">{link.platform}</span>
+                    <div
+                      className="w-5 h-5"
+                      dangerouslySetInnerHTML={{ __html: icon.svg }}
+                      style={{ fill: 'currentColor' }}
+                    />
+                    <span className="uppercase">{link.platform}</span>
                   </a>
                 </Button>
               )
