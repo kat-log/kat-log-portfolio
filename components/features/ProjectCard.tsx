@@ -27,12 +27,12 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
 
   return (
     <motion.div
-      whileHover={{ y: -8 }}
-      transition={{ duration: 0.3, ease: 'easeOut' }}
+      whileHover={{ y: -8, scale: 1.02 }}
+      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
       className="h-full"
     >
       <Card
-        className="h-full flex flex-col overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300 border-border/50"
+        className="h-full flex flex-col overflow-hidden cursor-pointer hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 border-border/50 hover:border-primary/30"
         onClick={() => onClick?.(project)}
       >
         {/* サムネイル画像 */}
