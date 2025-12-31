@@ -7,9 +7,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const navigationLinks = [
   { href: '/', label: 'Home' },
-  { href: '#projects', label: 'Projects' },
+  { href: '/#projects', label: 'Projects' },
   { href: '/about', label: 'About' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/#contact', label: 'Contact' },
 ];
 
 export function Navigation() {
@@ -40,10 +40,20 @@ export function Navigation() {
   const handleLinkClick = (href: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
     setIsOpen(false);
 
-    // ハッシュリンクの場合はスムーズスクロール
-    if (href.startsWith('#')) {
+    // ハッシュリンクの場合はスムーズスクロール（#で始まるか、/#で始まる場合）
+    const hash = href.startsWith('/#') ? href.slice(1) : href.startsWith('#') ? href : null;
+
+    if (hash) {
       e.preventDefault();
-      const element = document.querySelector(href);
+
+      // 別ページからのハッシュリンク（/#projects等）の場合は、まずページ遷移してからスクロール
+      if (href.startsWith('/#') && window.location.pathname !== '/') {
+        window.location.href = href;
+        return;
+      }
+
+      // 同一ページ内のハッシュリンクの場合はスムーズスクロール
+      const element = document.querySelector(hash);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
