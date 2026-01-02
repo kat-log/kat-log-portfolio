@@ -23,12 +23,23 @@ export function SkillCard({ skill }: SkillCardProps) {
     return (
       <div className="flex gap-1">
         {[1, 2, 3, 4, 5].map((level) => (
-          <div
+          <motion.div
             key={level}
-            className={`h-2 w-full rounded-full transition-colors ${
-              level <= skill.level ? getLevelColor(skill.level) : 'bg-muted'
-            }`}
-          />
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.5, delay: level * 0.1 }}
+            className="h-2 w-full rounded-full overflow-hidden bg-muted"
+            style={{ transformOrigin: 'left' }}
+          >
+            <motion.div
+              className={`h-full w-full rounded-full ${
+                level <= skill.level ? getLevelColor(skill.level) : 'bg-transparent'
+              }`}
+              initial={{ width: 0 }}
+              animate={{ width: level <= skill.level ? '100%' : 0 }}
+              transition={{ duration: 0.6, delay: level * 0.1 + 0.2 }}
+            />
+          </motion.div>
         ))}
       </div>
     )
@@ -36,11 +47,11 @@ export function SkillCard({ skill }: SkillCardProps) {
 
   return (
     <motion.div
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.3, ease: 'easeOut' }}
+      whileHover={{ y: -8, scale: 1.03 }}
+      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
       className="h-full"
     >
-      <Card className="h-full flex flex-col overflow-hidden hover:shadow-lg transition-shadow duration-300 border-border/50">
+      <Card className="h-full flex flex-col overflow-hidden hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 border-border/50 hover:border-primary/30">
         <CardHeader className="pb-3">
           <div className="flex items-start justify-between gap-2 mb-2">
             <h3 className="text-lg font-semibold">{skill.name}</h3>

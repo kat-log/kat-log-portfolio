@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { ProjectTag, PROJECT_TAG_LABELS } from '@/types'
 import { Button } from '@/components/ui/button'
 
@@ -28,16 +29,32 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
   return (
     <div className="w-full py-8">
       <div className="flex flex-wrap items-center justify-center gap-3">
-        {filters.map((filter) => (
-          <Button
+        {filters.map((filter, index) => (
+          <motion.div
             key={filter.value}
-            variant={activeFilter === filter.value ? 'default' : 'outline'}
-            size="sm"
-            onClick={() => handleFilterClick(filter.value)}
-            className="transition-all duration-200 hover:scale-105"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: index * 0.05 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            {filter.label}
-          </Button>
+            <Button
+              variant={activeFilter === filter.value ? 'default' : 'outline'}
+              size="sm"
+              onClick={() => handleFilterClick(filter.value)}
+              className="relative overflow-hidden"
+            >
+              {activeFilter === filter.value && (
+                <motion.span
+                  layoutId="activeFilter"
+                  className="absolute inset-0 bg-primary"
+                  style={{ zIndex: -1 }}
+                  transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                />
+              )}
+              {filter.label}
+            </Button>
+          </motion.div>
         ))}
       </div>
     </div>

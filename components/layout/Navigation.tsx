@@ -70,9 +70,10 @@ export function Navigation() {
               <Link
                 href={link.href}
                 onClick={handleLinkClick(link.href)}
-                className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+                className="relative text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors group"
               >
                 {link.label}
+                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
               </Link>
             </li>
           ))}
@@ -80,14 +81,16 @@ export function Navigation() {
       </nav>
 
       {/* モバイルハンバーガーボタン */}
-      <button
+      <motion.button
         onClick={() => setIsOpen(!isOpen)}
         className="md:hidden p-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
         aria-label="Toggle menu"
         aria-expanded={isOpen}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
       >
         {isOpen ? <X size={24} /> : <Menu size={24} />}
-      </button>
+      </motion.button>
 
       {/* モバイルメニューオーバーレイ */}
       <AnimatePresence>
@@ -129,16 +132,21 @@ export function Navigation() {
 
                 {/* ナビゲーションリンク */}
                 <ul className="flex flex-col p-4 space-y-2">
-                  {navigationLinks.map((link) => (
-                    <li key={link.href}>
+                  {navigationLinks.map((link, index) => (
+                    <motion.li
+                      key={link.href}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                    >
                       <Link
                         href={link.href}
                         onClick={handleLinkClick(link.href)}
-                        className="block px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                        className="block px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all hover:translate-x-2"
                       >
                         {link.label}
                       </Link>
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
               </div>

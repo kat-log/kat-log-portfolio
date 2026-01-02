@@ -1,23 +1,15 @@
 import { Metadata } from 'next'
 // import Image from 'next/image' // TODO: 実際の画像を使用する際にコメント解除
 import { Mail, MapPin } from 'lucide-react'
-import { siGithub, siX, siQiita } from 'simple-icons'
 import { profile } from '@/data/profile'
 import { getSkillsByCategory } from '@/data/skills'
 import { SkillCard } from '@/components/features/SkillCard'
+import { SocialLinks } from '@/components/features/SocialLinks'
 import { Button } from '@/components/ui/button'
 
 export const metadata: Metadata = {
   title: 'About | Kat Log Portfolio',
   description: 'Web Developer specializing in modern web technologies',
-}
-
-type SocialPlatform = 'github' | 'x' | 'qiita';
-
-const socialIcons: Record<SocialPlatform, typeof siGithub> = {
-  github: siGithub,
-  x: siX,
-  qiita: siQiita,
 }
 
 export default function AboutPage() {
@@ -83,35 +75,7 @@ export default function AboutPage() {
         {/* SNSリンクセクション */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-6">Connect</h2>
-          <div className="flex flex-wrap gap-4">
-            {profile.socialLinks.map((link) => {
-              const icon = socialIcons[link.platform as SocialPlatform]
-
-              return (
-                <Button
-                  key={link.platform}
-                  variant="outline"
-                  size="lg"
-                  asChild
-                  className="flex items-center gap-2"
-                >
-                  <a
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2"
-                  >
-                    <div
-                      className="w-5 h-5"
-                      dangerouslySetInnerHTML={{ __html: icon.svg }}
-                      style={{ fill: 'currentColor' }}
-                    />
-                    <span className="uppercase">{link.platform}</span>
-                  </a>
-                </Button>
-              )
-            })}
-          </div>
+          <SocialLinks links={profile.socialLinks} />
         </section>
 
         {/* スキルセクション */}
