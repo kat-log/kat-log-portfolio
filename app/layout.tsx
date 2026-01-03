@@ -3,6 +3,7 @@ import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
+import { PageTransition } from '@/components/providers/PageTransition'
 
 export const metadata: Metadata = {
   title: 'Portfolio - Kat Log',
@@ -25,7 +26,9 @@ export default function RootLayout({
         >
           <Header />
           <main className="flex-1 pt-16">
-            {children}
+            <PageTransition>
+              {children}
+            </PageTransition>
           </main>
           <Footer />
         </ThemeProvider>
