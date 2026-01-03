@@ -1,9 +1,16 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 
 export function HeroSection() {
+  // スクロール位置を取得
+  const { scrollY } = useScroll()
+
+  // パララックス効果: スクロールに応じて背景を移動（0.5倍速）
+  const backgroundY = useTransform(scrollY, [0, 500], [0, 250])
+  const backgroundOpacity = useTransform(scrollY, [0, 300], [1, 0.3])
+
   const handleScrollToProjects = () => {
     const projectsSection = document.getElementById('projects')
     if (projectsSection) {
@@ -46,9 +53,18 @@ export function HeroSection() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 py-16 md:py-24 overflow-hidden bg-white dark:bg-gray-950">
-      {/* 背景グラデーション */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-100/50 via-purple-100/50 to-pink-100/50 dark:from-blue-950/30 dark:via-purple-950/30 dark:to-pink-950/30 -z-10" />
+    <section className="relative min-h-screen flex items-center justify-center px-4 py-16 md:py-24 overflow-hidden">
+      {/* 背景（ベース） */}
+      <div className="absolute inset-0 bg-white dark:bg-gray-950 -z-10" />
+
+      {/* 背景グラデーション（パララックス効果） */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-br from-blue-100/50 via-purple-100/50 to-pink-100/50 dark:from-blue-400/20 dark:via-purple-400/20 dark:to-pink-400/20 z-0"
+        style={{
+          y: backgroundY,
+          opacity: backgroundOpacity,
+        }}
+      />
 
       {/* コンテンツ */}
       <motion.div
