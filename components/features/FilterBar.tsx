@@ -28,7 +28,7 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
 
   return (
     <div className="w-full py-8">
-      <div className="flex flex-wrap items-center justify-center gap-3">
+      <div className="flex flex-wrap items-center justify-center gap-3 p-4 rounded-2xl bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-white/20 dark:border-gray-700/30 shadow-lg shadow-black/5 dark:shadow-black/10">
         {filters.map((filter, index) => (
           <motion.div
             key={filter.value}

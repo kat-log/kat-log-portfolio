@@ -38,7 +38,7 @@ export function SocialLinks({ links }: SocialLinksProps) {
               className="flex items-center gap-2"
             >
               <div
-                className="w-5 h-5"
+                className="w-5 h-5 flex-shrink-0 [&>svg]:w-full [&>svg]:h-full"
                 dangerouslySetInnerHTML={{ __html: icon.svg }}
                 style={{ fill: 'currentColor' }}
               />
