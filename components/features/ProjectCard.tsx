@@ -32,7 +32,7 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
       className="h-full"
     >
       <Card
-        className="h-full flex flex-col overflow-hidden cursor-pointer hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 border-border/50 hover:border-primary/30"
+        className="h-full flex flex-col overflow-hidden cursor-pointer hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 border-border/50 hover:border-primary/30 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm"
         onClick={() => onClick?.(project)}
       >
         {/* サムネイル画像 */}
@@ -55,7 +55,7 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
             {/* Featured バッジ */}
             {project.featured && (
               <div className="absolute top-3 right-3">
-                <Badge variant="default" className="shadow-lg">
+                <Badge variant="default" className="shadow-lg backdrop-blur-md bg-primary/90 border border-white/20">
                   Featured
                 </Badge>
               </div>
