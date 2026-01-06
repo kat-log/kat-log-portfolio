@@ -8,10 +8,49 @@ import { Project, normalizeTechnologies, PROJECT_TYPE_LABELS } from '@/types'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { Skeleton } from '@/components/ui/skeleton'
 
 interface ProjectCardProps {
   project: Project
   onClick?: (project: Project) => void
+}
+
+export function ProjectCardSkeleton() {
+  return (
+    <Card className="h-full flex flex-col overflow-hidden bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
+      {/* サムネイル画像スケルトン */}
+      <Skeleton className="w-full h-48" />
+
+      <CardHeader className="pb-3">
+        <div className="flex items-start justify-between gap-2">
+          <div className="flex-1 min-w-0 space-y-2">
+            <Skeleton className="h-6 w-3/4" />
+            <Skeleton className="h-4 w-1/2" />
+          </div>
+        </div>
+      </CardHeader>
+
+      <CardContent className="flex-1 pb-3">
+        <div className="space-y-2 mb-4">
+          <Skeleton className="h-4 w-full" />
+          <Skeleton className="h-4 w-full" />
+          <Skeleton className="h-4 w-2/3" />
+        </div>
+
+        {/* 技術タグスケルトン */}
+        <div className="flex flex-wrap gap-1.5">
+          {[1, 2, 3, 4].map((i) => (
+            <Skeleton key={i} className="h-5 w-16" />
+          ))}
+        </div>
+      </CardContent>
+
+      <CardFooter className="pt-3 gap-2">
+        <Skeleton className="h-9 flex-1" />
+        <Skeleton className="h-9 flex-1" />
+      </CardFooter>
+    </Card>
+  )
 }
 
 export function ProjectCard({ project, onClick }: ProjectCardProps) {
