@@ -2,11 +2,13 @@
 
 import { motion } from 'framer-motion'
 import { Project } from '@/types'
-import { ProjectCard } from './ProjectCard'
+import { ProjectCard, ProjectCardSkeleton } from './ProjectCard'
 
 interface ProjectGridProps {
   projects: Project[]
   onProjectClick?: (project: Project) => void
+  isLoading?: boolean
+  skeletonCount?: number
 }
 
 // コンテナのアニメーション設定
@@ -34,7 +36,25 @@ const itemVariants = {
   },
 }
 
-export function ProjectGrid({ projects, onProjectClick }: ProjectGridProps) {
+export function ProjectGrid({
+  projects,
+  onProjectClick,
+  isLoading = false,
+  skeletonCount = 6
+}: ProjectGridProps) {
+  // ローディング状態の表示
+  if (isLoading) {
+    return (
+      <div className="w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {Array.from({ length: skeletonCount }).map((_, index) => (
+            <ProjectCardSkeleton key={`skeleton-${index}`} />
+          ))}
+        </div>
+      </div>
+    )
+  }
+
   // 空状態のハンドリング
   if (!projects || projects.length === 0) {
     return (

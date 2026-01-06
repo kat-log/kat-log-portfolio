@@ -1,17 +1,79 @@
 'use client'
 
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ProjectCard } from "@/components/features/ProjectCard"
+import { ProjectGrid } from "@/components/features/ProjectGrid"
+import { ProjectModal } from "@/components/features/ProjectModal"
 import { SkillCard } from "@/components/features/SkillCard"
 import { projects } from "@/data/projects"
 import { skills } from "@/data/skills"
+import type { Project } from "@/types"
 
 export default function ComponentsTestPage() {
+  const [isGridLoading, setIsGridLoading] = useState(false)
+  const [isModalLoading, setIsModalLoading] = useState(false)
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleShowGridLoading = () => {
+    setIsGridLoading(true)
+    setTimeout(() => setIsGridLoading(false), 3000)
+  }
+
+  const handleShowModalLoading = () => {
+    setSelectedProject(projects[0])
+    setIsModalOpen(true)
+    setIsModalLoading(true)
+    setTimeout(() => setIsModalLoading(false), 2000)
+  }
+
   return (
     <div className="container mx-auto p-8 space-y-12">
       <h1 className="text-4xl font-bold text-center mb-8">shadcn/ui コンポーネントテスト</h1>
+
+      {/* Loading States Tests */}
+      <section className="space-y-6">
+        <h2 className="text-3xl font-semibold border-b pb-2">ローディング状態テスト（P4-006）</h2>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>ローディング状態のデモ</CardTitle>
+            <CardDescription>
+              ボタンをクリックして、スケルトンローディング表示を確認してください
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex flex-wrap gap-4">
+              <Button onClick={handleShowGridLoading} disabled={isGridLoading}>
+                {isGridLoading ? '読み込み中...' : 'プロジェクトグリッドのローディング表示（3秒）'}
+              </Button>
+              <Button onClick={handleShowModalLoading} disabled={isModalLoading}>
+                {isModalLoading ? 'モーダル読み込み中...' : 'プロジェクトモーダルのローディング表示（2秒）'}
+              </Button>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              ※ 1つ目のボタン: 下のプロジェクト一覧がスケルトン表示に切り替わります（6個表示）<br />
+              ※ 2つ目のボタン: プロジェクト詳細モーダルがスケルトン表示で開きます
+            </p>
+          </CardContent>
+        </Card>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-medium">プロジェクト一覧</h3>
+          <ProjectGrid
+            projects={projects}
+            isLoading={isGridLoading}
+            skeletonCount={6}
+            onProjectClick={(project) => {
+              setSelectedProject(project)
+              setIsModalOpen(true)
+            }}
+          />
+        </div>
+      </section>
 
       {/* Button Tests */}
       <section className="space-y-6">
@@ -281,6 +343,17 @@ export default function ComponentsTestPage() {
           </Card>
         </div>
       </section>
+
+      {/* ProjectModal */}
+      <ProjectModal
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onClose={() => {
+          setIsModalOpen(false)
+          setIsModalLoading(false)
+        }}
+        isLoading={isModalLoading}
+      />
     </div>
   )
 }

@@ -20,14 +20,76 @@ import {
 } from '@/components/ui/dialog'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { Skeleton } from '@/components/ui/skeleton'
 
 interface ProjectModalProps {
   project: Project | null
   isOpen: boolean
   onClose: () => void
+  isLoading?: boolean
 }
 
-export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
+export function ProjectModal({ project, isOpen, onClose, isLoading = false }: ProjectModalProps) {
+  // ローディング状態の表示
+  if (isLoading) {
+    return (
+      <Dialog open={isOpen} onOpenChange={onClose}>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="invisible h-8">読み込み中</DialogTitle>
+            <DialogDescription className="invisible h-4">プロジェクト詳細を読み込んでいます</DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-3 -mt-4">
+            <Skeleton className="h-8 w-3/4" />
+            <Skeleton className="h-4 w-1/2" />
+          </div>
+
+          <div className="space-y-6 mt-4">
+            {/* スクリーンショットスケルトン */}
+            <div className="space-y-4">
+              <Skeleton className="h-6 w-48" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {[1, 2].map((i) => (
+                  <Skeleton key={i} className="aspect-video w-full" />
+                ))}
+              </div>
+            </div>
+
+            {/* 説明スケルトン */}
+            <div className="space-y-3">
+              <Skeleton className="h-6 w-40" />
+              <div className="space-y-2">
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-3/4" />
+              </div>
+            </div>
+
+            {/* 技術スタックスケルトン */}
+            <div className="space-y-3">
+              <Skeleton className="h-6 w-32" />
+              <div className="flex flex-wrap gap-2">
+                {[1, 2, 3, 4, 5, 6].map((i) => (
+                  <Skeleton key={i} className="h-6 w-20" />
+                ))}
+              </div>
+            </div>
+
+            {/* リンクスケルトン */}
+            <div className="space-y-3">
+              <Skeleton className="h-6 w-24" />
+              <div className="flex flex-wrap gap-3">
+                <Skeleton className="h-10 w-32" />
+                <Skeleton className="h-10 w-32" />
+              </div>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+    )
+  }
+
   if (!project) return null
 
   const technologies = normalizeTechnologies(project.technologies)
