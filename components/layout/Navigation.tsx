@@ -66,16 +66,25 @@ export function Navigation() {
       <nav className="hidden md:block">
         <ul className="flex items-center gap-8">
           {navigationLinks.map((link) => (
-            <li key={link.href}>
+            <motion.li
+              key={link.href}
+              whileHover={{ y: -2 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
               <Link
                 href={link.href}
                 onClick={handleLinkClick(link.href)}
                 className="relative text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors group"
               >
                 {link.label}
-                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                <motion.span
+                  className="absolute left-0 -bottom-1 h-0.5 bg-primary"
+                  initial={{ width: 0 }}
+                  whileHover={{ width: "100%" }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                />
               </Link>
-            </li>
+            </motion.li>
           ))}
         </ul>
       </nav>
