@@ -1,6 +1,9 @@
+'use client'
+
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
+import { motion } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 
@@ -35,20 +38,82 @@ const buttonVariants = cva(
 )
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onAnimationStart' | 'onDragStart' | 'onDragEnd' | 'onDrag'>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
+    const [ripples, setRipples] = React.useState<Array<{ x: number; y: number; id: number }>>([])
+
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+      if (asChild) {
+        props.onClick?.(e)
+        return
+      }
+
+      const button = e.currentTarget
+      const rect = button.getBoundingClientRect()
+      const x = e.clientX - rect.left
+      const y = e.clientY - rect.top
+      const id = Date.now()
+
+      setRipples((prev) => [...prev, { x, y, id }])
+
+      // リップルを削除
+      setTimeout(() => {
+        setRipples((prev) => prev.filter((ripple) => ripple.id !== id))
+      }, 600)
+
+      props.onClick?.(e)
+    }
+
+    if (asChild) {
+      return (
+        <Slot
+          className={cn(buttonVariants({ variant, size, className }))}
+          ref={ref}
+          {...props}
+        />
+      )
+    }
+
     return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
+      <motion.button
+        className={cn(buttonVariants({ variant, size, className }), "relative overflow-hidden")}
         ref={ref}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+        onClick={handleClick}
         {...props}
-      />
+      >
+        {props.children}
+
+        {/* リップルエフェクト */}
+        {ripples.map((ripple) => (
+          <motion.span
+            key={ripple.id}
+            className="absolute rounded-full bg-white/30 dark:bg-white/20 pointer-events-none"
+            initial={{
+              width: 0,
+              height: 0,
+              x: ripple.x,
+              y: ripple.y,
+              opacity: 1,
+            }}
+            animate={{
+              width: 200,
+              height: 200,
+              x: ripple.x - 100,
+              y: ripple.y - 100,
+              opacity: 0,
+            }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          />
+        ))}
+      </motion.button>
     )
   }
 )
