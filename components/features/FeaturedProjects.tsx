@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { Project, isTechnologyStack, isScreenshotObject } from '@/types'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -52,7 +53,7 @@ export function FeaturedProjects({ projects, onProjectClick }: FeaturedProjectsP
                 {/* プロジェクト画像 */}
                 <div className="relative h-64 md:h-80 overflow-hidden bg-gradient-to-br from-primary/10 to-primary/5">
                   {project.screenshots && project.screenshots.length > 0 ? (
-                    <img
+                    <Image
                       src={
                         isScreenshotObject(project.screenshots[0])
                           ? project.screenshots[0].url
@@ -63,7 +64,9 @@ export function FeaturedProjects({ projects, onProjectClick }: FeaturedProjectsP
                           ? project.screenshots[0].alt
                           : project.title
                       }
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-muted-foreground">
