@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import dynamic from 'next/dynamic'
+import Script from 'next/script'
 import { HeroSection } from '@/components/features/HeroSection'
 import { AboutSection } from '@/components/features/AboutSection'
 import { FeaturedProjects } from '@/components/features/FeaturedProjects'
@@ -48,8 +49,34 @@ export default function Home() {
     return projects.filter((project) => project.tags.includes(activeFilter))
   }, [activeFilter])
 
+  // 構造化データ（JSON-LD）
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: profile.name,
+    jobTitle: profile.title,
+    description: profile.bio,
+    url: 'https://kat-log-portfolio.vercel.app',
+    sameAs: profile.socialLinks.map((link) => link.url),
+    knowsAbout: [
+      'Web Development',
+      'Frontend Development',
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+    ],
+  }
+
   return (
     <main className="min-h-screen">
+      {/* 構造化データ */}
+      <Script
+        id="structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
       {/* ヒーローセクション */}
       <HeroSection />
 
