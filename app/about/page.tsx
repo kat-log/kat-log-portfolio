@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     type: 'profile',
     images: [
       {
-        url: '/og-image-about.png', // TODO: About用のOG画像を作成
+        url: '/api/og?type=about&title=About - Kat Log&description=フロントエンド開発を中心に、ユーザーにとって使いやすく、美しいWebアプリケーションの構築に情熱を注いでいます。',
         width: 1200,
         height: 630,
         alt: 'About Kat Log',
@@ -30,6 +30,7 @@ export const metadata: Metadata = {
     title: 'About - Kat Log',
     description:
       'フロントエンド開発を中心に、ユーザーにとって使いやすく、美しいWebアプリケーションの構築に情熱を注いでいます。',
+    images: ['/api/og?type=about&title=About - Kat Log&description=フロントエンド開発を中心に、ユーザーにとって使いやすく、美しいWebアプリケーションの構築に情熱を注いでいます。'],
   },
 }
 

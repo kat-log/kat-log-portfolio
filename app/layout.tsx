@@ -49,7 +49,7 @@ export const metadata: Metadata = {
       'モダンな技術を使ってユーザー体験を向上させるWebアプリケーションを開発しています。',
     images: [
       {
-        url: '/og-image.png', // TODO: OG画像を作成
+        url: '/api/og?type=website',
         width: 1200,
         height: 630,
         alt: 'Kat Log Portfolio',
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     description:
       'モダンな技術を使ってユーザー体験を向上させるWebアプリケーションを開発しています。',
     creator: '@yourusername', // TODO: 実際のTwitterアカウントに置き換え
-    images: ['/og-image.png'], // TODO: OG画像を作成
+    images: ['/api/og?type=website'],
   },
   verification: {
     // TODO: Google Search Consoleの確認後に追加
