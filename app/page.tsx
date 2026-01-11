@@ -1,15 +1,24 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import dynamic from 'next/dynamic'
 import { HeroSection } from '@/components/features/HeroSection'
 import { AboutSection } from '@/components/features/AboutSection'
 import { FeaturedProjects } from '@/components/features/FeaturedProjects'
 import { ProjectGrid } from '@/components/features/ProjectGrid'
-import { ProjectModal } from '@/components/features/ProjectModal'
 import { FilterBar } from '@/components/features/FilterBar'
 import { projects } from '@/data/projects'
 import { profile } from '@/data/profile'
 import { Project, ProjectTag } from '@/types'
+
+// 動的インポート: モーダルは使用時まで遅延読み込み（クリック時のみロード）
+const ProjectModal = dynamic(
+  () => import('@/components/features/ProjectModal').then((mod) => ({ default: mod.ProjectModal })),
+  {
+    ssr: false,
+    loading: () => null,
+  }
+)
 
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
@@ -68,12 +77,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* プロジェクト詳細モーダル */}
-      <ProjectModal
-        project={selectedProject}
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-      />
+      {/* プロジェクト詳細モーダル - 条件付きレンダリングで遅延読み込みを実現 */}
+      {isModalOpen && (
+        <ProjectModal
+          project={selectedProject}
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+        />
+      )}
     </main>
   )
 }
