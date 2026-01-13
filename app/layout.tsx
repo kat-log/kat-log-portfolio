@@ -1,9 +1,27 @@
 import type { Metadata } from 'next'
+import { Inter, Noto_Sans_JP } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
 import { PageTransition } from '@/components/providers/PageTransition'
+
+// 英語フォント（Inter）の設定
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+  preload: true,
+})
+
+// 日本語フォント（Noto Sans JP）の設定
+const notoSansJP = Noto_Sans_JP({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-noto-sans-jp',
+  preload: true,
+  weight: ['400', '500', '700'],
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://kat-log-portfolio.vercel.app'), // TODO: 実際のデプロイURLに置き換え
@@ -80,7 +98,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja" suppressHydrationWarning>
-      <body className="flex flex-col min-h-screen">
+      <body className={`flex flex-col min-h-screen ${inter.variable} ${notoSansJP.variable}`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
