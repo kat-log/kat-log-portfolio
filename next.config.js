@@ -1,3 +1,5 @@
+import withBundleAnalyzer from '@next/bundle-analyzer'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typedRoutes: true,
@@ -18,6 +20,18 @@ const nextConfig = {
     contentDispositionType: 'attachment', // SVG用のセキュリティヘッダー
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;", // SVG用のCSP
   },
+  // バンドルサイズ最適化
+  compiler: {
+    // 本番環境でconsole.log等を削除（デバッグコードの除去）
+    removeConsole: process.env.NODE_ENV === 'production' ? {
+      exclude: ['error', 'warn'], // error と warn は残す
+    } : false,
+  },
 }
 
-export default nextConfig
+// Bundle Analyzerの設定
+const bundleAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+})
+
+export default bundleAnalyzer(nextConfig)
