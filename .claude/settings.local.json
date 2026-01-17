@@ -17,7 +17,14 @@
       "Read(//Users/yamadatarou/Library/CloudStorage/GoogleDrive-greentea.tomatosystem@gmail.com/My Drive/Mac_ScreenShots・キャプチャ/M2MacbookAir2024-06-13〜/**)",
       "Bash(git checkout:*)",
       "Bash(find:*)",
-      "Bash(git pull:*)"
+      "Bash(git pull:*)",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_resize",
+      "mcp__playwright__browser_snapshot",
+      "mcp__playwright__browser_console_messages",
+      "mcp__playwright__browser_close",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_press_key"
     ],
     "deny": []
   }
