@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
 
@@ -11,27 +11,25 @@ interface PageTransitionProps {
 /**
  * ページ遷移アニメーションを提供するプロバイダーコンポーネント
  *
- * Framer MotionのAnimatePresenceを使用して、
- * ページ間のスムーズなフェードイン/アウトトランジションを実装
+ * シンプルなフェードインアニメーションでページ遷移を演出
+ * Note: AnimatePresenceのmode="wait"はNext.js App Routerと
+ * 相性が悪く描画問題を起こすため、シンプルな実装に変更
  */
 export function PageTransition({ children }: PageTransitionProps) {
   const pathname = usePathname();
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
-      <motion.div
-        key={pathname}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        transition={{
-          duration: 0.3,
-          ease: [0.4, 0.0, 0.2, 1], // easeInOut カスタムベジェ曲線
-        }}
-        className="min-h-screen"
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
+    <motion.div
+      key={pathname}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{
+        duration: 0.3,
+        ease: [0.4, 0.0, 0.2, 1],
+      }}
+      className="min-h-screen"
+    >
+      {children}
+    </motion.div>
   );
 }
