@@ -69,7 +69,7 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen">
+    <div className="min-h-screen">
       {/* 構造化データ */}
       <Script
         id="structured-data"
@@ -112,6 +112,6 @@ export default function Home() {
           onClose={handleCloseModal}
         />
       )}
-    </main>
+    </div>
   )
 }
