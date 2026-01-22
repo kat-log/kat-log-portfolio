@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { ProjectTag, PROJECT_TAG_LABELS } from '@/types'
 import { Button } from '@/components/ui/button'
 
@@ -11,6 +11,7 @@ interface FilterBarProps {
 
 export function FilterBar({ onFilterChange }: FilterBarProps) {
   const [activeFilter, setActiveFilter] = useState<ProjectTag | 'all'>('all')
+  const shouldReduceMotion = useReducedMotion()
 
   const handleFilterClick = (tag: ProjectTag | 'all') => {
     setActiveFilter(tag)
@@ -32,11 +33,11 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
         {filters.map((filter, index) => (
           <motion.div
             key={filter.value}
-            initial={{ opacity: 0, y: 20 }}
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: index * 0.05 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.3, delay: index * 0.05 }}
+            whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
+            whileTap={shouldReduceMotion ? undefined : { scale: 0.95 }}
           >
             <Button
               variant={activeFilter === filter.value ? 'default' : 'outline'}
@@ -49,7 +50,7 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
                   layoutId="activeFilter"
                   className="absolute inset-0 bg-primary"
                   style={{ zIndex: -1 }}
-                  transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                  transition={shouldReduceMotion ? { duration: 0 } : { type: 'spring', bounce: 0.2, duration: 0.6 }}
                 />
               )}
               {filter.label}

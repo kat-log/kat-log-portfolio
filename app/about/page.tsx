@@ -40,7 +40,7 @@ export default function AboutPage() {
   const toolSkills = getSkillsByCategory('tool')
 
   return (
-    <main className="min-h-screen py-12 px-4 md:py-20">
+    <div className="min-h-screen py-12 px-4 md:py-20">
       <div className="max-w-5xl mx-auto">
         {/* プロフィールセクション */}
         <section className="mb-16">
@@ -146,6 +146,6 @@ export default function AboutPage() {
           </Button>
         </section>
       </div>
-    </main>
+    </div>
   )
 }
