@@ -26,6 +26,8 @@ test.describe('アクセシビリティ - axe-core 自動テスト', () => {
   test('Aboutページがアクセシビリティ基準を満たす', async ({ page }) => {
     await page.goto('/about');
     await page.waitForLoadState('networkidle');
+    // CSS変数が完全に解決されるまで待機（Webkit対策）
+    await page.waitForSelector('.text-primary-foreground', { state: 'visible' });
 
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
