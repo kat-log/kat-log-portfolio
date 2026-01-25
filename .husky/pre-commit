@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+if [ "$branch" = "main" ]; then
+  echo "❌ mainブランチへの直接コミットは禁止されています！"
+  echo "📝 新しいブランチを作成してからコミットしてください。"
+  echo ""
+  echo "  git checkout -b feat/your-feature"
+  echo ""
+  exit 1
+fi
