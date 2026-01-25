@@ -47,14 +47,27 @@ export default defineConfig({
 
   // ブラウザ設定
   projects: [
+    // デスクトップブラウザ
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-    // モバイルテスト用
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+    },
+    // モバイルブラウザ
     {
       name: 'mobile-chrome',
       use: { ...devices['Pixel 5'] },
+    },
+    {
+      name: 'mobile-safari',
+      use: { ...devices['iPhone 12'] },
     },
   ],
 
