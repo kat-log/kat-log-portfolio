@@ -26,8 +26,16 @@ test.describe('アクセシビリティ - axe-core 自動テスト', () => {
   test('Aboutページがアクセシビリティ基準を満たす', async ({ page }) => {
     await page.goto('/about');
     await page.waitForLoadState('networkidle');
-    // CSS変数が完全に解決されるまで待機（Webkit対策）
-    await page.waitForSelector('.text-primary-foreground', { state: 'visible' });
+
+    // Webkit対策: CSS変数が完全に解決されるまで待機
+    // h1のテキスト色がグレー系（スケルトン/未解決状態）でないことを確認
+    await page.waitForFunction(() => {
+      const h1 = document.querySelector('h1');
+      if (!h1) return false;
+      const computedColor = window.getComputedStyle(h1).color;
+      // #bdbdbd = rgb(189, 189, 189), #c0c0c0 = rgb(192, 192, 192)
+      return computedColor !== 'rgb(189, 189, 189)' && computedColor !== 'rgb(192, 192, 192)';
+    });
 
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
