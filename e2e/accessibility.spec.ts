@@ -7,9 +7,23 @@ import AxeBuilder from '@axe-core/playwright';
  */
 
 test.describe('アクセシビリティ - axe-core 自動テスト', () => {
-  // 全テストでアニメーションを無効化（Framer Motionはアニメーションをスキップする）
+  // 全テストでアニメーションを無効化
   test.beforeEach(async ({ page }) => {
+    // Framer Motion用
     await page.emulateMedia({ reducedMotion: 'reduce' });
+    // CSSトランジション/アニメーションも完全に無効化（Webkit対策）
+    await page.addInitScript(() => {
+      const style = document.createElement('style');
+      style.textContent = `
+        *, *::before, *::after {
+          transition: none !important;
+          animation: none !important;
+          transition-duration: 0s !important;
+          animation-duration: 0s !important;
+        }
+      `;
+      document.head.appendChild(style);
+    });
   });
 
   test('ホームページがアクセシビリティ基準を満たす', async ({ page }) => {
@@ -26,8 +40,6 @@ test.describe('アクセシビリティ - axe-core 自動テスト', () => {
   test('Aboutページがアクセシビリティ基準を満たす', async ({ page }) => {
     await page.goto('/about');
     await page.waitForLoadState('networkidle');
-    // CSS変数が完全に解決されるまで待機（Webkit対策）
-    await page.waitForSelector('.text-primary-foreground', { state: 'visible' });
 
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
@@ -95,8 +107,21 @@ test.describe('アクセシビリティ - axe-core 自動テスト', () => {
 test.describe('アクセシビリティ - モバイルビュー', () => {
   test.beforeEach(async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
-    // アニメーションを無効化（Framer Motionはアニメーションをスキップする）
+    // Framer Motion用
     await page.emulateMedia({ reducedMotion: 'reduce' });
+    // CSSトランジション/アニメーションも完全に無効化（Webkit対策）
+    await page.addInitScript(() => {
+      const style = document.createElement('style');
+      style.textContent = `
+        *, *::before, *::after {
+          transition: none !important;
+          animation: none !important;
+          transition-duration: 0s !important;
+          animation-duration: 0s !important;
+        }
+      `;
+      document.head.appendChild(style);
+    });
   });
 
   test('モバイルホームページがアクセシビリティ基準を満たす', async ({ page }) => {
@@ -386,8 +411,21 @@ test.describe('スクリーンリーダー対応', () => {
 
 test.describe('カラーコントラスト', () => {
   test.beforeEach(async ({ page }) => {
-    // アニメーションを無効化（Framer Motionはアニメーションをスキップする）
+    // Framer Motion用
     await page.emulateMedia({ reducedMotion: 'reduce' });
+    // CSSトランジション/アニメーションも完全に無効化（Webkit対策）
+    await page.addInitScript(() => {
+      const style = document.createElement('style');
+      style.textContent = `
+        *, *::before, *::after {
+          transition: none !important;
+          animation: none !important;
+          transition-duration: 0s !important;
+          animation-duration: 0s !important;
+        }
+      `;
+      document.head.appendChild(style);
+    });
   });
 
   test('テキストのコントラスト比が十分である', async ({ page }) => {
