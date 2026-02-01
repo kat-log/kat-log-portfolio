@@ -52,3 +52,4 @@ build-output*.txt
 
 *storybook.log
 storybook-static
+.lighthouseci/
