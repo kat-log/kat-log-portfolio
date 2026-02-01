@@ -25,6 +25,8 @@ module.exports = {
         'categories:seo': ['error', { minScore: 0.95 }],
       },
     },
-    // レポートは GitHub Actions のログで確認（temporary-public-storage は使用しない）
+    upload: {
+      target: 'temporary-public-storage',
+    },
   },
 };
