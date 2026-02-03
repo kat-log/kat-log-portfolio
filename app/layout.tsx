@@ -5,6 +5,7 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
 import { PageTransition } from '@/components/providers/PageTransition'
+import { Analytics } from '@vercel/analytics/react'
 
 // 英語フォント（Inter）の設定
 const inter = Inter({
@@ -113,6 +114,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )
