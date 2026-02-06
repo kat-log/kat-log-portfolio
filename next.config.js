@@ -1,3 +1,4 @@
+import { withSentryConfig } from '@sentry/nextjs'
 import withBundleAnalyzer from '@next/bundle-analyzer'
 
 /** @type {import('next').NextConfig} */
@@ -34,4 +35,25 @@ const bundleAnalyzer = withBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 })
 
-export default bundleAnalyzer(nextConfig)
+// Sentry設定オプション
+const sentryOptions = {
+  // ソースマップのアップロード設定
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+
+  // 認証トークン（CI/CD用）
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+
+  // ソースマップを本番ビルドでのみアップロード
+  silent: !process.env.CI,
+
+  // 追加のWebpack設定
+  widenClientFileUpload: true,
+
+  // ソースマップをクライアントに公開しない
+  hideSourceMaps: true,
+
+  // 注: automaticVercelMonitors は Turbopack 非対応のため削除
+}
+
+export default withSentryConfig(bundleAnalyzer(nextConfig), sentryOptions)
