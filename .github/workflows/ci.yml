@@ -116,13 +116,15 @@ jobs:
       - name: Build application
         run: pnpm build
 
+      - name: Archive build for artifact
+        run: tar -czf nextjs-build.tar.gz .next
+
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: nextjs-build
-          path: .next
+          path: nextjs-build.tar.gz
           retention-days: 1
-          include-hidden-files: true
 
   e2e-tests:
     name: E2E Tests
@@ -188,7 +190,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: nextjs-build
-          path: .next
+
+      - name: Extract build
+        run: tar -xzf nextjs-build.tar.gz
 
       - name: Run Lighthouse CI
         run: pnpm exec lhci autorun
