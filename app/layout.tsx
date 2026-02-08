@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     title: 'Kat Log - Web Developer Portfolio',
     description:
       'モダンな技術を使ってユーザー体験を向上させるWebアプリケーションを開発しています。',
-    creator: '@yourusername', // TODO: 実際のTwitterアカウントに置き換え
+    creator: '@yourusername', // TODO: 実際のXアカウントに置き換え
     images: ['/api/og?type=website'],
   },
   verification: {
