@@ -12,24 +12,24 @@ export const profile: Profile = {
   longBio:
     'フロントエンド開発を中心に、ユーザーにとって使いやすく、美しいWebアプリケーションの構築に情熱を注いでいます。Next.js、React、TypeScriptなどのモダンな技術スタックを活用し、パフォーマンスとアクセシビリティを重視した開発を心がけています。',
   avatar: '/images/avatar.png', // TODO: 実際のアバター画像に置き換え
-  email: 'contact@example.com', // TODO: 実際のメールアドレスに置き換え
-  location: '東京, 日本',
+  // email: 'contact@example.com', // TODO: 実際のメールアドレスに置き換え
+  location: '京都, 日本',
   skills: skills,
   socialLinks: [
     {
       platform: 'github',
-      url: 'https://github.com/yourusername', // TODO: 実際のGitHubアカウントに置き換え
-      username: 'yourusername',
+      url: 'https://github.com/kat-log',
+      username: 'kat-log',
     },
     {
       platform: 'x',
-      url: 'https://x.com/yourusername', // TODO: 実際のXアカウントに置き換え
-      username: '@yourusername',
+      url: 'https://x.com/kat__log',
+      username: '@kat__log',
     },
     {
       platform: 'qiita',
-      url: 'https://qiita.com/yourusername', // TODO: 実際のQiitaアカウントに置き換え
-      username: 'yourusername',
+      url: 'https://qiita.com/kat_log',
+      username: 'kat_log',
     },
   ],
 }

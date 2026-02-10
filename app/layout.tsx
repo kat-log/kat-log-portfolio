@@ -25,7 +25,7 @@ const notoSansJP = Noto_Sans_JP({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://kat-log-portfolio.vercel.app'), // TODO: 実際のデプロイURLに置き換え
+  metadataBase: new URL('https://kat-log-portfolio.vercel.app'),
   title: {
     default: 'Kat Log - Web Developer Portfolio',
     template: '%s | Kat Log',
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     title: 'Kat Log - Web Developer Portfolio',
     description:
       'モダンな技術を使ってユーザー体験を向上させるWebアプリケーションを開発しています。',
-    creator: '@yourusername', // TODO: 実際のXアカウントに置き換え
+    creator: '@kat__log',
     images: ['/api/og?type=website'],
   },
   verification: {
