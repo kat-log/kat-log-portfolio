@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { profile } from '../data/profile';
 
 test.describe('Aboutページ', () => {
   test.beforeEach(async ({ page }) => {
@@ -18,7 +19,7 @@ test.describe('Aboutページ', () => {
     await expect(page.getByText('Web Developer')).toBeVisible();
 
     // 所在地が表示される
-    await expect(page.getByText('東京, 日本')).toBeVisible();
+    await expect(page.getByText(profile.location!)).toBeVisible();
   });
 
   test('スキルセクションが表示される', async ({ page }) => {
@@ -40,11 +41,17 @@ test.describe('Aboutページ', () => {
     // CTAセクションの見出し確認
     await expect(page.getByRole('heading', { name: "Let's Work Together" })).toBeVisible();
 
-    // Get in Touchボタンの確認
-    await expect(page.getByRole('link', { name: 'Get in Touch' })).toBeVisible();
+    // Get in Touchボタンはemail設定時のみ表示
+    const contactButton = page.getByRole('link', { name: 'Get in Touch' });
+    if (profile.email) {
+      await expect(contactButton).toBeVisible();
+    } else {
+      await expect(contactButton).not.toBeVisible();
+    }
   });
 
   test('Get in Touchボタンがメールリンクになっている', async ({ page }) => {
+    test.skip(!profile.email, 'email未設定のためスキップ');
     const contactButton = page.getByRole('link', { name: 'Get in Touch' });
     await expect(contactButton).toHaveAttribute('href', /^mailto:/);
   });
