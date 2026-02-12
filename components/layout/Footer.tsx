@@ -27,15 +27,17 @@ export function Footer() {
           </div>
 
           {/* メールアドレス */}
-          <div className="text-center mb-8">
-            <a
-              href={`mailto:${profile.email}`}
-              className="inline-flex items-center gap-2 text-xl md:text-2xl font-semibold text-gray-900 dark:text-gray-100 hover:text-primary dark:hover:text-primary transition-colors"
-            >
-              <Mail className="w-6 h-6" />
-              {profile.email}
-            </a>
-          </div>
+          {profile.email && (
+            <div className="text-center mb-8">
+              <a
+                href={`mailto:${profile.email}`}
+                className="inline-flex items-center gap-2 text-xl md:text-2xl font-semibold text-gray-900 dark:text-gray-100 hover:text-primary dark:hover:text-primary transition-colors"
+              >
+                <Mail className="w-6 h-6" />
+                {profile.email}
+              </a>
+            </div>
+          )}
 
           {/* SNSリンク */}
           <div className="flex justify-center items-center gap-6 mb-8">

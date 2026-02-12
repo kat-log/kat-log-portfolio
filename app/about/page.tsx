@@ -76,15 +76,17 @@ export default function AboutPage() {
                   <MapPin className="w-4 h-4" />
                   <span>{profile.location}</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4" />
-                  <a
-                    href={`mailto:${profile.email}`}
-                    className="hover:text-foreground transition-colors"
-                  >
-                    {profile.email}
-                  </a>
-                </div>
+                {profile.email && (
+                  <div className="flex items-center gap-2">
+                    <Mail className="w-4 h-4" />
+                    <a
+                      href={`mailto:${profile.email}`}
+                      className="hover:text-foreground transition-colors"
+                    >
+                      {profile.email}
+                    </a>
+                  </div>
+                )}
               </div>
 
               <p className="text-lg leading-relaxed text-muted-foreground">
@@ -141,9 +143,11 @@ export default function AboutPage() {
           <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
             新しいプロジェクトや協力の機会がありましたら、お気軽にご連絡ください。
           </p>
-          <Button size="lg" asChild>
-            <a href={`mailto:${profile.email}`}>Get in Touch</a>
-          </Button>
+          {profile.email && (
+            <Button size="lg" asChild>
+              <a href={`mailto:${profile.email}`}>Get in Touch</a>
+            </Button>
+          )}
         </section>
       </div>
     </div>
