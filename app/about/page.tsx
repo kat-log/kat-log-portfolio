@@ -2,8 +2,9 @@ import { Metadata } from 'next'
 // import Image from 'next/image' // TODO: 実際の画像を使用する際にコメント解除
 import { Mail, MapPin } from 'lucide-react'
 import { profile } from '@/data/profile'
-import { getSkillsByCategory } from '@/data/skills'
-import { SkillCard } from '@/components/features/SkillCard'
+// TODO: スキルセクション復活時にコメント解除
+// import { getSkillsByCategory } from '@/data/skills'
+// import { SkillCard } from '@/components/features/SkillCard'
 import { SocialLinks } from '@/components/features/SocialLinks'
 import { Button } from '@/components/ui/button'
 
@@ -35,9 +36,10 @@ export const metadata: Metadata = {
 }
 
 export default function AboutPage() {
-  const languageSkills = getSkillsByCategory('language')
-  const frameworkSkills = getSkillsByCategory('framework')
-  const toolSkills = getSkillsByCategory('tool')
+  // TODO: スキルセクション復活時にコメント解除
+  // const languageSkills = getSkillsByCategory('language')
+  // const frameworkSkills = getSkillsByCategory('framework')
+  // const toolSkills = getSkillsByCategory('tool')
 
   return (
     <div className="min-h-screen py-12 px-4 md:py-20">
@@ -102,11 +104,10 @@ export default function AboutPage() {
           <SocialLinks links={profile.socialLinks} />
         </section>
 
-        {/* スキルセクション */}
+        {/* TODO: スキルセクション - スキルレベルの見直し後に表示を復活させる
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-6">Skills</h2>
 
-          {/* プログラミング言語 */}
           <div className="mb-8">
             <h3 className="text-2xl font-semibold mb-4">Languages</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -116,7 +117,6 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* フレームワーク */}
           <div className="mb-8">
             <h3 className="text-2xl font-semibold mb-4">Frameworks & Libraries</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -126,7 +126,6 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* ツール */}
           <div className="mb-8">
             <h3 className="text-2xl font-semibold mb-4">Tools</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -136,6 +135,7 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
+        */}
 
         {/* CTAセクション */}
         <section className="text-center py-12 px-6 bg-muted rounded-lg">
