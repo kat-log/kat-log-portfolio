@@ -32,18 +32,6 @@ export const metadata: Metadata = {
   },
   description:
     'モダンな技術を使ってユーザー体験を向上させるWebアプリケーションを開発しています。Next.js、React、TypeScriptを活用したプロジェクトをご覧ください。',
-  keywords: [
-    'Web Developer',
-    'Frontend Developer',
-    'Next.js',
-    'React',
-    'TypeScript',
-    'Tailwind CSS',
-    'Portfolio',
-    'ポートフォリオ',
-    'フロントエンド',
-    'Web開発',
-  ],
   authors: [{ name: 'Kat Log' }],
   creator: 'Kat Log',
   publisher: 'Kat Log',

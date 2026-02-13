@@ -3,7 +3,8 @@
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Twitter, FileText } from 'lucide-react'
 import { Profile, SocialPlatform } from '@/types'
-import { SkillCard } from './SkillCard'
+// TODO: スキルセクション復活時にコメント解除
+// import { SkillCard } from './SkillCard'
 import { Button } from '@/components/ui/button'
 
 interface AboutSectionProps {
@@ -47,10 +48,10 @@ const itemVariants = {
 }
 
 export function AboutSection({ profile, showAllSkills = false }: AboutSectionProps) {
-  // スキルを表示する数を制限（ホームページでは主要スキルのみ）
-  const displaySkills = showAllSkills
-    ? profile.skills
-    : profile.skills.filter(skill => skill.level >= 3).slice(0, 6)
+  // TODO: スキルセクション復活時にコメント解除
+  // const displaySkills = showAllSkills
+  //   ? profile.skills
+  //   : profile.skills.filter(skill => skill.level >= 3).slice(0, 6)
 
   return (
     <section className="py-12 px-4 md:py-16 bg-muted/30">
@@ -109,20 +110,18 @@ export function AboutSection({ profile, showAllSkills = false }: AboutSectionPro
           </div>
         </motion.div>
 
-        {/* スキルセクション */}
+        {/* TODO: スキルセクション - スキルレベルの見直し後に表示を復活させる
         <motion.div variants={itemVariants}>
           <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center">
             {showAllSkills ? 'All Skills' : 'Core Skills'}
           </h3>
 
-          {/* スキルグリッド */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {displaySkills.map((skill) => (
               <SkillCard key={skill.name} skill={skill} />
             ))}
           </div>
 
-          {/* 全スキル表示へのリンク（ホームページの場合） */}
           {!showAllSkills && profile.skills.length > displaySkills.length && (
             <div className="mt-8 text-center">
               <Button variant="outline" asChild>
@@ -133,6 +132,7 @@ export function AboutSection({ profile, showAllSkills = false }: AboutSectionPro
             </div>
           )}
         </motion.div>
+        */}
       </motion.div>
     </section>
   )
