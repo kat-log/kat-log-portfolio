@@ -22,15 +22,16 @@ test.describe('Aboutページ', () => {
     await expect(page.getByText(profile.location!)).toBeVisible();
   });
 
-  test('スキルセクションが表示される', async ({ page }) => {
-    // スキルセクションの見出し確認
-    await expect(page.getByRole('heading', { name: 'Skills' })).toBeVisible();
+  // TODO: スキルセクション復活時にコメント解除
+  // test('スキルセクションが表示される', async ({ page }) => {
+  //   // スキルセクションの見出し確認
+  //   await expect(page.getByRole('heading', { name: 'Skills' })).toBeVisible();
 
-    // 各カテゴリの確認
-    await expect(page.getByRole('heading', { name: 'Languages' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Frameworks & Libraries' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Tools' })).toBeVisible();
-  });
+  //   // 各カテゴリの確認
+  //   await expect(page.getByRole('heading', { name: 'Languages' })).toBeVisible();
+  //   await expect(page.getByRole('heading', { name: 'Frameworks & Libraries' })).toBeVisible();
+  //   await expect(page.getByRole('heading', { name: 'Tools' })).toBeVisible();
+  // });
 
   test('SNSリンクセクションが表示される', async ({ page }) => {
     // Connectセクションの見出し確認
@@ -66,8 +67,8 @@ test.describe('Aboutページのレスポンシブデザイン', () => {
     // プロフィール情報が表示される
     await expect(page.getByRole('heading', { name: 'Kat Log' })).toBeVisible();
 
-    // スキルセクションが表示される
-    await expect(page.getByRole('heading', { name: 'Skills' })).toBeVisible();
+    // TODO: スキルセクション復活時にコメント解除
+    // await expect(page.getByRole('heading', { name: 'Skills' })).toBeVisible();
   });
 
   test('タブレットビューで正常に表示される', async ({ page }) => {
@@ -78,7 +79,7 @@ test.describe('Aboutページのレスポンシブデザイン', () => {
     // プロフィール情報が表示される
     await expect(page.getByRole('heading', { name: 'Kat Log' })).toBeVisible();
 
-    // スキルセクションが表示される
-    await expect(page.getByRole('heading', { name: 'Skills' })).toBeVisible();
+    // TODO: スキルセクション復活時にコメント解除
+    // await expect(page.getByRole('heading', { name: 'Skills' })).toBeVisible();
   });
 });
