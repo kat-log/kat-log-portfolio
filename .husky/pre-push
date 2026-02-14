@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+echo "push前チェック: 型チェックとlintを実行中..."
+
+pnpm type-check || {
+  echo "型チェックに失敗しました。修正してからpushしてください。"
+  exit 1
+}
+
+pnpm lint || {
+  echo "lintに失敗しました。修正してからpushしてください。"
+  exit 1
+}
+
+echo "push前チェック: すべて合格しました。"
