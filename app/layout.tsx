@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: '%s | Kat Log',
   },
   description:
-    'モダンな技術を使ってユーザー体験を向上させるWebアプリケーションを開発しています。Next.js、React、TypeScriptを活用したプロジェクトをご覧ください。',
+    'Web開発を学びながら、実際にアプリケーションを作っています。Next.js、React、TypeScriptを活用したプロジェクトをご覧ください。',
   authors: [{ name: 'Kat Log' }],
   creator: 'Kat Log',
   publisher: 'Kat Log',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     siteName: 'Kat Log Portfolio',
     title: 'Kat Log - Web Developer Portfolio',
     description:
-      'モダンな技術を使ってユーザー体験を向上させるWebアプリケーションを開発しています。',
+      'Web開発を学びながら、実際にアプリケーションを作っています。',
     images: [
       {
         url: '/api/og?type=website',
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Kat Log - Web Developer Portfolio',
     description:
-      'モダンな技術を使ってユーザー体験を向上させるWebアプリケーションを開発しています。',
+      'Web開発を学びながら、実際にアプリケーションを作っています。',
     creator: '@kat__log',
     images: ['/api/og?type=website'],
   },
