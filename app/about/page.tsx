@@ -11,15 +11,15 @@ import { Button } from '@/components/ui/button'
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'フロントエンド開発を中心に、ユーザーにとって使いやすく、美しいWebアプリケーションの構築に情熱を注いでいます。Next.js、React、TypeScriptなどのモダンな技術スタックを活用した開発を行っています。',
+    'Web開発を学んでいます。これまでの制作物をまとめていますのでご覧ください。',
   openGraph: {
     title: 'About - Kat Log',
     description:
-      'フロントエンド開発を中心に、ユーザーにとって使いやすく、美しいWebアプリケーションの構築に情熱を注いでいます。',
+      'Web開発を学んでいます。これまでの制作物をまとめていますのでご覧ください。',
     type: 'profile',
     images: [
       {
-        url: '/api/og?type=about&title=About - Kat Log&description=フロントエンド開発を中心に、ユーザーにとって使いやすく、美しいWebアプリケーションの構築に情熱を注いでいます。',
+        url: '/api/og?type=about&title=About - Kat Log&description=Web開発を学んでいます。これまでの制作物をまとめていますのでご覧ください。',
         width: 1200,
         height: 630,
         alt: 'About Kat Log',
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'About - Kat Log',
     description:
-      'フロントエンド開発を中心に、ユーザーにとって使いやすく、美しいWebアプリケーションの構築に情熱を注いでいます。',
-    images: ['/api/og?type=about&title=About - Kat Log&description=フロントエンド開発を中心に、ユーザーにとって使いやすく、美しいWebアプリケーションの構築に情熱を注いでいます。'],
+      'Web開発を学んでいます。これまでの制作物をまとめていますのでご覧ください。',
+    images: ['/api/og?type=about&title=About - Kat Log&description=Web開発を学んでいます。これまでの制作物をまとめていますのでご覧ください。'],
   },
 }
 
@@ -138,10 +138,10 @@ export default function AboutPage() {
         */}
 
         {/* CTAセクション */}
-        <section className="text-center py-12 px-6 bg-muted rounded-lg">
-          <h2 className="text-3xl font-bold mb-4">Let&apos;s Work Together</h2>
+        <section data-testid="cta-section" className="text-center py-12 px-6 bg-muted rounded-lg">
+          <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
           <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
-            新しいプロジェクトや協力の機会がありましたら、お気軽にご連絡ください。
+            一緒に開発できる機会があれば嬉しいです。お気軽にご連絡ください。
           </p>
           {profile.email && (
             <Button size="lg" asChild>

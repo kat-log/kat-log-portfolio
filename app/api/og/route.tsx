@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
     const title = searchParams.get('title') || 'Kat Log - Web Developer Portfolio'
     const description =
       searchParams.get('description') ||
-      'モダンな技術を使ってユーザー体験を向上させるWebアプリケーションを開発しています'
+      'Web開発を学びながら、実際にアプリケーションを作っています'
     const type = searchParams.get('type') || 'website' // website, project, about
 
     return new ImageResponse(

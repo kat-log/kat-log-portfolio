@@ -78,7 +78,7 @@ export function HeroSection() {
           variants={itemVariants}
           className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent"
         >
-          Welcome to Kat Log
+          Welcome to Kat Log Portfolio
         </motion.h1>
 
         {/* サブタイトル */}
@@ -86,7 +86,7 @@ export function HeroSection() {
           variants={itemVariants}
           className="text-xl md:text-2xl lg:text-3xl text-gray-800 dark:text-gray-200 mb-8 font-medium"
         >
-          Creating Modern Web Experiences
+          Kat Log のポートフォリオへようこそ
         </motion.p>
 
         {/* 説明文 */}
@@ -94,8 +94,8 @@ export function HeroSection() {
           variants={itemVariants}
           className="text-base md:text-lg lg:text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed"
         >
-          Web開発者として、モダンな技術スタックを活用したユーザー体験の高いアプリケーションを構築しています。
-          Next.js、TypeScript、Tailwind CSSを使用したプロジェクトをご覧ください。
+          Next.js、TypeScript、Tailwind
+          CSSなどを学びながら、Webアプリケーションを制作しています。
         </motion.p>
 
         {/* CTA ボタン */}

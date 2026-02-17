@@ -39,15 +39,18 @@ test.describe('Aboutページ', () => {
   });
 
   test('CTAセクションが表示される', async ({ page }) => {
-    // CTAセクションの見出し確認
-    await expect(page.getByRole('heading', { name: "Let's Work Together" })).toBeVisible();
+    const ctaSection = page.getByTestId('cta-section');
+    await expect(ctaSection).toBeVisible();
 
-    // Get in Touchボタンはemail設定時のみ表示
-    const contactButton = page.getByRole('link', { name: 'Get in Touch' });
+    // 見出しが存在する
+    await expect(ctaSection.getByRole('heading', { level: 2 })).toBeVisible();
+
+    // メールリンクはemail設定時のみ表示
+    const contactLink = ctaSection.getByRole('link');
     if (profile.email) {
-      await expect(contactButton).toBeVisible();
+      await expect(contactLink).toBeVisible();
     } else {
-      await expect(contactButton).not.toBeVisible();
+      await expect(contactLink).not.toBeVisible();
     }
   });
 

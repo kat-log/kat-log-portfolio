@@ -23,7 +23,9 @@ const config = [
       "public/**",
       "next-env.d.ts",
       "storybook-static/**",
-      "stories/**"
+      "stories/**",
+      "playwright-report/**",
+      "test-results/**"
     ],
   },
   ...storybook.configs["flat/recommended"]
