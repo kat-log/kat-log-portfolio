@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-// import Image from 'next/image' // TODO: 実際の画像を使用する際にコメント解除
+import Image from 'next/image'
 import { Mail, MapPin } from 'lucide-react'
 import { profile } from '@/data/profile'
 // TODO: スキルセクション復活時にコメント解除
@@ -50,7 +50,6 @@ export default function AboutPage() {
             {/* プロフィール画像 */}
             <div className="flex-shrink-0">
               <div className="relative w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-gray-200 dark:border-gray-700 bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
-                {/* TODO: 実際の画像に置き換える
                 <Image
                   src={profile.avatar}
                   alt={profile.name}
@@ -58,9 +57,6 @@ export default function AboutPage() {
                   className="object-cover"
                   priority
                 />
-                */}
-                {/* 一時的なプレースホルダー */}
-                <span className="text-6xl md:text-8xl">👤</span>
               </div>
             </div>
 
