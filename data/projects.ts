@@ -22,7 +22,7 @@ export const projects: Project[] = [
       { url: '/images/projects/amaguri/about.png', alt: 'アバウトページ' }
     ],
     featured: true,
-    date: '2025-06',
+    date: '2025-12',
     status: 'completed'
   },
   {
