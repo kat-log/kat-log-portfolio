@@ -24,5 +24,28 @@ export const projects: Project[] = [
     featured: true,
     date: '2025-06',
     status: 'completed'
+  },
+  {
+    id: 'kat-log-portfolio',
+    title: 'Kat Log ポートフォリオ',
+    type: 'website',
+    description:
+      'こちらのポートフォリオサイトです。これまでの制作物を紹介しています。Next.js 15・TypeScript・Tailwind CSSで構築し、Vercelで公開しています。',
+    tags: ['frontend', 'personal'],
+    technologies: {
+      frontend: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+      deploy: ['Vercel']
+    },
+    links: {
+      demo: 'https://kat-log-portfolio.vercel.app/',
+      github: 'https://github.com/kat-log/kat-log-portfolio'
+    },
+    screenshots: [
+      { url: '/images/projects/katlog-portfolio/hero.png', alt: 'トップページ' },
+      { url: '/images/projects/katlog-portfolio/about.png', alt: 'アバウトページ' }
+    ],
+    featured: true,
+    date: '2026-02',
+    status: 'in-progress'
   }
 ]
