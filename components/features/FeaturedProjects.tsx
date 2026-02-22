@@ -49,7 +49,10 @@ export function FeaturedProjects({ projects, onProjectClick }: FeaturedProjectsP
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group relative"
             >
-              <div className="relative h-full bg-card border rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div
+                className="relative h-full bg-card border rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                onClick={() => onProjectClick(project)}
+              >
                 {/* プロジェクト画像 */}
                 <div className="relative h-64 md:h-80 overflow-hidden bg-gradient-to-br from-primary/10 to-primary/5">
                   {project.screenshots && project.screenshots.length > 0 ? (
@@ -146,18 +149,12 @@ export function FeaturedProjects({ projects, onProjectClick }: FeaturedProjectsP
 
                   {/* アクションボタン */}
                   <div className="flex flex-wrap gap-3">
-                    <Button
-                      onClick={() => onProjectClick(project)}
-                      className="flex-1"
-                    >
-                      詳細を見る
-                    </Button>
-
                     {project.links?.github && (
                       <Button
                         variant="outline"
                         size="icon"
                         asChild
+                        onClick={(e) => e.stopPropagation()}
                       >
                         <a
                           href={project.links.github}
@@ -175,6 +172,7 @@ export function FeaturedProjects({ projects, onProjectClick }: FeaturedProjectsP
                         variant="outline"
                         size="icon"
                         asChild
+                        onClick={(e) => e.stopPropagation()}
                       >
                         <a
                           href={project.links.demo || project.links.store || '#'}
