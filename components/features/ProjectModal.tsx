@@ -1,9 +1,11 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ExternalLink, Github } from 'lucide-react'
+import { ExternalLink, Github, ZoomIn } from 'lucide-react'
+import { ImageLightbox } from '@/components/features/ImageLightbox'
 import {
   Project,
   normalizeTechnologies,
@@ -30,6 +32,8 @@ interface ProjectModalProps {
 }
 
 export function ProjectModal({ project, isOpen, onClose, isLoading = false }: ProjectModalProps) {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
+
   // ローディング状態の表示
   if (isLoading) {
     return (
@@ -105,7 +109,15 @@ export function ProjectModal({ project, isOpen, onClose, isLoading = false }: Pr
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+      <DialogContent
+        className="max-w-4xl max-h-[90vh] overflow-y-auto"
+        onPointerDownOutside={(e) => {
+          if (lightboxIndex !== null) e.preventDefault()
+        }}
+        onEscapeKeyDown={(e) => {
+          if (lightboxIndex !== null) e.preventDefault()
+        }}
+      >
         <DialogHeader>
           <div className="flex flex-col gap-3 pr-8">
             <div className="flex items-center gap-2">
@@ -148,7 +160,16 @@ export function ProjectModal({ project, isOpen, onClose, isLoading = false }: Pr
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: index * 0.1 }}
-                    className="relative aspect-video bg-muted rounded-lg overflow-hidden border border-border"
+                    className="relative aspect-video bg-muted rounded-lg overflow-hidden border border-border cursor-pointer group/screenshot"
+                    onClick={() => setLightboxIndex(index)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault()
+                        setLightboxIndex(index)
+                      }
+                    }}
                   >
                     <Image
                       src={screenshot.url}
@@ -157,6 +178,10 @@ export function ProjectModal({ project, isOpen, onClose, isLoading = false }: Pr
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
+                    {/* ホバーオーバーレイ */}
+                    <div className="absolute inset-0 bg-black/0 group-hover/screenshot:bg-black/30 transition-colors duration-200 flex items-center justify-center">
+                      <ZoomIn className="h-8 w-8 text-white opacity-0 group-hover/screenshot:opacity-100 transition-opacity duration-200" />
+                    </div>
                     {screenshot.caption && (
                       <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-sm p-2">
                         {screenshot.caption}
@@ -280,6 +305,16 @@ export function ProjectModal({ project, isOpen, onClose, isLoading = false }: Pr
             </div>
           </div>
         </motion.div>
+
+        {/* Lightbox */}
+        {screenshots.length > 0 && (
+          <ImageLightbox
+            images={screenshots}
+            initialIndex={lightboxIndex ?? 0}
+            isOpen={lightboxIndex !== null}
+            onClose={() => setLightboxIndex(null)}
+          />
+        )}
       </DialogContent>
     </Dialog>
   )
