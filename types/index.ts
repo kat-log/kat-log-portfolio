@@ -27,7 +27,8 @@ export type ProjectTag =
   | "design"
   | "opensource"
   | "personal"
-  | "client";
+  | "client"
+  | "extension";
 
 /**
  * プロジェクトのステータス
@@ -310,6 +311,7 @@ export const PROJECT_TAG_LABELS: Record<ProjectTag, string> = {
   opensource: "オープンソース",
   personal: "個人プロジェクト",
   client: "クライアントワーク",
+  extension: "拡張機能",
 };
 
 /**

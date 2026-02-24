@@ -100,7 +100,7 @@ export default function Home() {
           <FilterBar onFilterChange={handleFilterChange} />
 
           {/* プロジェクトグリッド */}
-          <ProjectGrid projects={filteredProjects} onProjectClick={handleProjectClick} />
+          <ProjectGrid key={activeFilter} projects={filteredProjects} onProjectClick={handleProjectClick} />
         </div>
       </section>
 
