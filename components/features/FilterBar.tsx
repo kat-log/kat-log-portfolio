@@ -22,9 +22,7 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
     { value: 'all', label: 'すべて' },
     { value: 'frontend', label: PROJECT_TAG_LABELS.frontend },
     { value: 'backend', label: PROJECT_TAG_LABELS.backend },
-    { value: 'fullstack', label: PROJECT_TAG_LABELS.fullstack },
-    { value: 'design', label: PROJECT_TAG_LABELS.design },
-    { value: 'opensource', label: PROJECT_TAG_LABELS.opensource },
+    { value: 'extension', label: PROJECT_TAG_LABELS.extension },
   ]
 
   return (
