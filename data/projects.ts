@@ -47,5 +47,29 @@ export const projects: Project[] = [
     featured: true,
     date: '2026-02',
     status: 'in-progress'
+  },
+  {
+    id: 'youtube-live-voicevox',
+    title: 'YouTubeライブチャット ずんだもんボイス読み上げ',
+    type: 'extension',
+    description:
+      'YouTubeライブ配信のコメントをVOICEVOXのずんだもんの声でリアルタイムに読み上げるChrome拡張機能。話者選択・速度調整・音量調整などに対応。約100名の方にご利用いただいています。',
+    tags: ['extension', 'personal'],
+    technologies: {
+      frontend: ['JavaScript', 'Chrome Extension Manifest V3'],
+      tools: ['YouTube Data API v3', 'VOICEVOX API (TTS Quest)']
+    },
+    links: {
+      store:
+        'https://chromewebstore.google.com/detail/youtube%E3%83%A9%E3%82%A4%E3%83%96%E3%83%81%E3%83%A3%E3%83%83%E3%83%88%E3%81%9A%E3%82%93%E3%81%A0%E3%82%82%E3%82%93%E3%83%9C%E3%82%A4%E3%82%B9%E8%AA%AD%E3%81%BF%E4%B8%8A/gdakacmdogbakjhalfjkclkagdojhooi'
+    },
+    screenshots: [
+      { url: '/images/projects/youtube-voicevox/screenshot1.png', alt: 'メイン紹介画像' },
+      { url: '/images/projects/youtube-voicevox/screenshot2.png', alt: '機能紹介画像' },
+      { url: '/images/projects/youtube-voicevox/screenshot3.png', alt: '設定画面' }
+    ],
+    featured: false,
+    date: '2025-08',
+    status: 'completed'
   }
 ]
