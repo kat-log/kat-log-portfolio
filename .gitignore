@@ -56,3 +56,6 @@ build-output*.txt
 *storybook.log
 storybook-static
 .lighthouseci/
+
+# Claude Code work files
+.claude/worktrees/
