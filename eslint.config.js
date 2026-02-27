@@ -25,7 +25,8 @@ const config = [
       "storybook-static/**",
       "stories/**",
       "playwright-report/**",
-      "test-results/**"
+      "test-results/**",
+      ".claude/worktrees/**"
     ],
   },
   ...storybook.configs["flat/recommended"]

@@ -71,5 +71,28 @@ export const projects: Project[] = [
     featured: false,
     date: '2025-08',
     status: 'completed'
+  },
+  {
+    id: 'qiita-stock-incremental-search',
+    title: 'Qiita ストック インクリメンタルサーチ',
+    type: 'extension',
+    description:
+      'Qiita記事のストック時にカテゴリーを絞り込み検索できるChrome拡張機能。インストールするだけで検索フォームが追加され、部分一致でカテゴリーをリアルタイムに絞り込み可能。',
+    tags: ['extension', 'personal'],
+    technologies: {
+      frontend: ['JavaScript', 'HTML', 'Chrome Extension Manifest V3']
+    },
+    links: {
+      store:
+        'https://chromewebstore.google.com/detail/qiita-%E3%82%B9%E3%83%88%E3%83%83%E3%82%AF-%E3%82%A4%E3%83%B3%E3%82%AF%E3%83%AA%E3%83%A1%E3%83%B3%E3%82%BF%E3%83%AB%E3%82%B5%E3%83%BC%E3%83%81/kgkghjdpjkjedpalgimneellgbobadnl',
+      github: 'https://github.com/kat-log/chrome-extension-qiita-stock-incremental-search'
+    },
+    screenshots: [
+      { url: '/images/projects/qiita-stock-search/screenshot1.png', alt: 'メイン紹介画像' },
+      { url: '/images/projects/qiita-stock-search/screenshot2.png', alt: '絞り込みフォーム動作画面' }
+    ],
+    featured: false,
+    date: '2026-02',
+    status: 'completed'
   }
 ]
