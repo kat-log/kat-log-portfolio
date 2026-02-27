@@ -228,6 +228,11 @@
   - Chrome Web Storeからスクリーンショット3枚を取得・配置
   - type: extension、tags: extension/personal、store リンク設定
 
+- ✅ **プロジェクトデータ追加: Qiita ストック インクリメンタルサーチ** (2026-02-27 完了, Issue #81 部分対応)
+  - Chrome拡張機能プロジェクトをdata/projects.tsに追加
+  - Chrome Web Storeからスクリーンショット2枚を取得・配置
+  - type: extension、tags: extension/personal、store + github リンク設定
+
 ### 将来の拡張機能（MVP 後）
 
 - EmailJS を使ったお問い合わせフォーム
@@ -271,8 +276,8 @@ pnpm type-check
 
 ---
 
-**最終更新**: 2026-02-25
-**バージョン**: 1.25.0
+**最終更新**: 2026-02-27
+**バージョン**: 1.26.0
 
 ## 進捗状況サマリー
 
