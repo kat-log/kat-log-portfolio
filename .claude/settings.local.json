@@ -25,7 +25,10 @@
       "mcp__playwright__browser_close",
       "mcp__playwright__browser_take_screenshot",
       "mcp__playwright__browser_press_key",
-      "WebFetch(domain:amaguri-2bro-gallery.kat-log.workers.dev)"
+      "WebFetch(domain:amaguri-2bro-gallery.kat-log.workers.dev)",
+      "Bash(gh pr checks:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr diff:*)"
     ],
     "deny": []
   }
