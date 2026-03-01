@@ -72,8 +72,7 @@ export const metadata: Metadata = {
     images: ['/api/og?type=website'],
   },
   verification: {
-    // TODO: Google Search Consoleの確認後に追加
-    // google: 'your-google-verification-code',
+    google: 'lpJ5m2pVDwZlgFbM6K1QQBukFayAOQVZDfq1FsE5Kc4',
   },
   alternates: {
     canonical: 'https://kat-log-portfolio.vercel.app',
