@@ -6,6 +6,7 @@ import { Footer } from '@/components/layout/Footer'
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
 import { PageTransition } from '@/components/providers/PageTransition'
 import { Analytics } from '@vercel/analytics/react'
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 // 英語フォント（Inter）の設定
 const inter = Inter({
@@ -102,6 +103,9 @@ export default function RootLayout({
           <Footer />
         </ThemeProvider>
         <Analytics />
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        )}
       </body>
     </html>
   )

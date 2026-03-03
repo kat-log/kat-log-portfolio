@@ -233,6 +233,11 @@
   - Chrome Web Storeからスクリーンショット2枚を取得・配置
   - type: extension、tags: extension/personal、store + github リンク設定
 
+- ✅ **Google Analytics 4 (GA4) 導入** (2026-03-02 完了, Issue #104)
+  - `@next/third-parties/google`のGoogleAnalyticsコンポーネント導入
+  - 環境変数（NEXT_PUBLIC_GA_ID）による測定ID管理
+  - Vercel Analyticsと併用（パフォーマンス計測 + ユーザー行動分析）
+
 ### 将来の拡張機能（MVP 後）
 
 - EmailJS を使ったお問い合わせフォーム
@@ -276,8 +281,8 @@ pnpm type-check
 
 ---
 
-**最終更新**: 2026-02-27
-**バージョン**: 1.26.0
+**最終更新**: 2026-03-02
+**バージョン**: 1.27.0
 
 ## 進捗状況サマリー
 
