@@ -28,7 +28,8 @@
       "WebFetch(domain:amaguri-2bro-gallery.kat-log.workers.dev)",
       "Bash(gh pr checks:*)",
       "Bash(gh pr view:*)",
-      "Bash(gh pr diff:*)"
+      "Bash(gh pr diff:*)",
+      "mcp__playwright__browser_network_requests"
     ],
     "deny": []
   }
