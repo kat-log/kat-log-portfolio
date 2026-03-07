@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Twitter, FileText } from 'lucide-react'
+import { siGithub, siX, siQiita } from 'simple-icons'
 import { Profile, SocialPlatform } from '@/types'
 // TODO: スキルセクション復活時にコメント解除
 // import { SkillCard } from './SkillCard'
@@ -13,13 +13,10 @@ interface AboutSectionProps {
 }
 
 // SNSプラットフォームとアイコンのマッピング
-const socialIcons: Record<SocialPlatform, React.ComponentType<{ className?: string }>> = {
-  github: Github,
-  x: Twitter,
-  linkedin: Linkedin,
-  qiita: FileText,
-  zenn: FileText,
-  other: FileText,
+const socialIcons: Partial<Record<SocialPlatform, typeof siGithub>> = {
+  github: siGithub,
+  x: siX,
+  qiita: siQiita,
 }
 
 // コンテナのアニメーション設定
@@ -85,7 +82,8 @@ export function AboutSection({ profile, showAllSkills = false }: AboutSectionPro
           {/* SNSリンク */}
           <div className="flex flex-wrap justify-center gap-3">
             {profile.socialLinks.map((social) => {
-              const Icon = socialIcons[social.platform]
+              const icon = socialIcons[social.platform]
+              if (!icon) return null
               return (
                 <Button
                   key={social.platform}
@@ -100,7 +98,11 @@ export function AboutSection({ profile, showAllSkills = false }: AboutSectionPro
                     rel="noopener noreferrer"
                     aria-label={`${social.platform} - ${social.username}`}
                   >
-                    <Icon className="h-4 w-4" />
+                    <div
+                      className="h-4 w-4"
+                      dangerouslySetInnerHTML={{ __html: icon.svg }}
+                      style={{ fill: 'currentColor' }}
+                    />
                     <span className="hidden sm:inline">{social.username}</span>
                     <span className="sm:hidden capitalize">{social.platform}</span>
                   </a>
