@@ -115,5 +115,27 @@ export const projects: Project[] = [
     featured: false,
     date: '2026-03',
     status: 'completed'
+  },
+  {
+    id: 'youtube-live-chat-filter',
+    title: 'YouTube特別コメントフィルター',
+    type: 'extension',
+    description:
+      'YouTubeライブチャットでモデレーター・メンバー・配信者などの特別なコメントのみを表示できるChrome拡張機能。ワンクリックで通常コメントを非表示にし、重要な発言を見逃さない。',
+    tags: ['extension', 'personal'],
+    technologies: {
+      frontend: ['JavaScript', 'HTML', 'CSS', 'Chrome Extension Manifest V3']
+    },
+    links: {
+      store: 'https://chromewebstore.google.com/detail/youtube%E7%89%B9%E5%88%A5%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC/ngdfibejjanimbkpnenkhfdiledjmogo',
+      github: 'https://github.com/kat-log/youtube-live-chat-filter'
+    },
+    screenshots: [
+      { url: '/images/projects/youtube-chat-filter/screenshot1.png', alt: 'メイン紹介画像' },
+      { url: '/images/projects/youtube-chat-filter/screenshot2.png', alt: 'フィルター動作画面' }
+    ],
+    featured: false,
+    date: '2025-07',
+    status: 'completed'
   }
 ]
