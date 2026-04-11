@@ -59,7 +59,7 @@ export function HeroSection() {
 
       {/* 背景グラデーション（パララックス効果） */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-blue-100/50 via-purple-100/50 to-pink-100/50 dark:from-blue-400/20 dark:via-purple-400/20 dark:to-pink-400/20 z-0"
+        className="absolute inset-0 bg-gradient-to-br from-teal-100/50 via-teal-50/50 to-emerald-100/50 dark:from-teal-400/15 dark:via-teal-300/10 dark:to-emerald-400/15 z-0"
         style={{
           y: backgroundY,
           opacity: backgroundOpacity,
@@ -76,7 +76,7 @@ export function HeroSection() {
         {/* メインタイトル */}
         <motion.h1
           variants={itemVariants}
-          className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 pb-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent"
+          className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 pb-2 bg-gradient-to-r from-teal-700 via-teal-600 to-emerald-600 dark:from-teal-300 dark:via-teal-400 dark:to-emerald-300 bg-clip-text text-transparent"
         >
           Welcome to Kat Log Portfolio
         </motion.h1>
@@ -105,7 +105,7 @@ export function HeroSection() {
         >
           <button
             onClick={handleScrollToProjects}
-            className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            className="px-8 py-4 bg-gradient-to-r from-teal-700 to-teal-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
           >
             プロジェクトを見る
           </button>
