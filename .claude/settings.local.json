@@ -29,7 +29,8 @@
       "Bash(gh pr checks:*)",
       "Bash(gh pr view:*)",
       "Bash(gh pr diff:*)",
-      "mcp__playwright__browser_network_requests"
+      "mcp__playwright__browser_network_requests",
+      "Bash(grep:*)"
     ],
     "deny": []
   }
