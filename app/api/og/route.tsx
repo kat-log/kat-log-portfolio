@@ -24,7 +24,7 @@ export async function GET(request: NextRequest) {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            background: 'linear-gradient(135deg, #247e75 0%, #3aafa9 100%)',
             fontFamily: 'system-ui, -apple-system, sans-serif',
           }}
         >
