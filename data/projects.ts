@@ -94,5 +94,26 @@ export const projects: Project[] = [
     featured: false,
     date: '2026-02',
     status: 'completed'
+  },
+  {
+    id: 'copy-all-tab-urls',
+    title: 'Copy All Tab URLs',
+    type: 'extension',
+    description:
+      '開いているタブのURLを一括コピーしたり、QiitaやZennなど任意サイトの記事リンクをまとめて抽出してクリップボードにコピーするChrome拡張機能。ポップアップのボタン1回で動作し、日本語・英語に対応。',
+    tags: ['extension', 'personal'],
+    technologies: {
+      frontend: ['JavaScript', 'HTML', 'CSS', 'Chrome Extension Manifest V3']
+    },
+    links: {
+      store: 'https://chromewebstore.google.com/detail/copy-all-tab-urls/ohiamlgdahmmkadngmcjiiedncmoegnd',
+      github: 'https://github.com/kat-log/copy-links'
+    },
+    screenshots: [
+      { url: '/images/projects/copy-links/screenshot1.png', alt: 'メイン紹介画像' }
+    ],
+    featured: false,
+    date: '2026-03',
+    status: 'completed'
   }
 ]
