@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ExternalLink, Github } from 'lucide-react'
+import { ExternalLink, Github, Info, ShoppingCart } from 'lucide-react'
 import { Project, normalizeTechnologies, PROJECT_TYPE_LABELS } from '@/types'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -191,7 +191,7 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <ExternalLink className="w-4 h-4 mr-2" />
+                <Info className="w-4 h-4 mr-2" />
                 紹介ページ
               </Link>
             </Button>
@@ -210,7 +210,7 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <ExternalLink className="w-4 h-4 mr-2" />
+                <ShoppingCart className="w-4 h-4 mr-2" />
                 Store
               </Link>
             </Button>
