@@ -21,7 +21,7 @@ export const projects: Project[] = [
       { url: '/images/projects/amaguri/gallery.png', alt: 'ギャラリーページ' },
       { url: '/images/projects/amaguri/about.png', alt: 'アバウトページ' }
     ],
-    featured: true,
+    featured: false,
     date: '2025-12',
     status: 'completed'
   },
@@ -61,7 +61,9 @@ export const projects: Project[] = [
     },
     links: {
       store:
-        'https://chromewebstore.google.com/detail/youtube%E3%83%A9%E3%82%A4%E3%83%96%E3%83%81%E3%83%A3%E3%83%83%E3%83%88%E3%81%9A%E3%82%93%E3%81%A0%E3%82%82%E3%82%93%E3%83%9C%E3%82%A4%E3%82%B9%E8%AA%AD%E3%81%BF%E4%B8%8A/gdakacmdogbakjhalfjkclkagdojhooi'
+        'https://chromewebstore.google.com/detail/youtube%E3%83%A9%E3%82%A4%E3%83%96%E3%83%81%E3%83%A3%E3%83%83%E3%83%88%E3%81%9A%E3%82%93%E3%81%A0%E3%82%82%E3%82%93%E3%83%9C%E3%82%A4%E3%82%B9%E8%AA%AD%E3%81%BF%E4%B8%8A/gdakacmdogbakjhalfjkclkagdojhooi',
+      github: 'https://github.com/kat-log/youtube-voicevox-standalone',
+      lp: 'https://kat-log.github.io/youtube-voicevox-standalone/'
     },
     screenshots: [
       { url: '/images/projects/youtube-voicevox/screenshot1.png', alt: 'メイン紹介画像' },
@@ -69,8 +71,8 @@ export const projects: Project[] = [
       { url: '/images/projects/youtube-voicevox/screenshot3.png', alt: '設定画面' },
       { url: '/images/projects/youtube-voicevox/screenshot4.png', alt: '詳細設定画面' }
     ],
-    featured: false,
-    date: '2025-08',
+    featured: true,
+    date: '2026-04',
     status: 'completed'
   },
   {

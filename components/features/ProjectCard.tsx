@@ -173,7 +173,26 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
                 rel="noopener noreferrer"
               >
                 <ExternalLink className="w-4 h-4 mr-2" />
-                Demo
+                サイトを見る
+              </Link>
+            </Button>
+          )}
+
+          {project.links.lp && (
+            <Button
+              variant="outline"
+              size="sm"
+              className="flex-1"
+              asChild
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Link
+                href={project.links.lp}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <ExternalLink className="w-4 h-4 mr-2" />
+                紹介ページ
               </Link>
             </Button>
           )}

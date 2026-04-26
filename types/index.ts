@@ -80,6 +80,7 @@ export interface TechnologyStack {
 export interface ProjectLinks {
   github?: string;
   demo?: string;
+  lp?: string;
   store?: string;
   article?: string; // Qiitaやブログ記事など
   video?: string; // デモ動画など
