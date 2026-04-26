@@ -1,18 +1,10 @@
 import Link from "next/link";
 import { Mail } from "lucide-react";
-import { siGithub, siX, siQiita } from "simple-icons";
 import { profile } from "@/data/profile";
-
-type SocialPlatform = 'github' | 'x' | 'qiita';
+import { SOCIAL_PLATFORM_CONFIG } from "@/lib/social-platforms";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
-
-  const socialIcons: Record<SocialPlatform, typeof siGithub> = {
-    github: siGithub,
-    x: siX,
-    qiita: siQiita,
-  };
 
   return (
     <footer id="contact" className="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
@@ -42,7 +34,8 @@ export function Footer() {
           {/* SNSリンク */}
           <div className="flex justify-center items-center gap-6 mb-8">
             {profile.socialLinks.map((link) => {
-              const icon = socialIcons[link.platform as SocialPlatform];
+              const config = SOCIAL_PLATFORM_CONFIG[link.platform];
+              if (!config) return null;
 
               return (
                 <Link
@@ -51,12 +44,12 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
-                  aria-label={link.platform}
-                  title={link.platform}
+                  aria-label={config.label}
+                  title={config.label}
                 >
                   <div
                     className="w-6 h-6"
-                    dangerouslySetInnerHTML={{ __html: icon.svg }}
+                    dangerouslySetInnerHTML={{ __html: config.icon.svg }}
                     style={{ fill: 'currentColor' }}
                   />
                 </Link>
