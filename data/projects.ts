@@ -66,7 +66,8 @@ export const projects: Project[] = [
     screenshots: [
       { url: '/images/projects/youtube-voicevox/screenshot1.png', alt: 'メイン紹介画像' },
       { url: '/images/projects/youtube-voicevox/screenshot2.png', alt: '機能紹介画像' },
-      { url: '/images/projects/youtube-voicevox/screenshot3.png', alt: '設定画面' }
+      { url: '/images/projects/youtube-voicevox/screenshot3.png', alt: '設定画面' },
+      { url: '/images/projects/youtube-voicevox/screenshot4.png', alt: '詳細設定画面' }
     ],
     featured: false,
     date: '2025-08',
