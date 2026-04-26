@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ExternalLink, Github, ZoomIn } from 'lucide-react'
+import { ExternalLink, Github, ZoomIn, Info, ShoppingCart, BookOpen, Play } from 'lucide-react'
 import { ImageLightbox } from '@/components/features/ImageLightbox'
 import {
   Project,
@@ -271,7 +271,7 @@ export function ProjectModal({ project, isOpen, onClose, isLoading = false }: Pr
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <ExternalLink className="w-5 h-5 mr-2" />
+                    <Info className="w-5 h-5 mr-2" />
                     紹介ページ
                   </Link>
                 </Button>
@@ -284,7 +284,7 @@ export function ProjectModal({ project, isOpen, onClose, isLoading = false }: Pr
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <ExternalLink className="w-5 h-5 mr-2" />
+                    <ShoppingCart className="w-5 h-5 mr-2" />
                     ストア
                   </Link>
                 </Button>
@@ -297,7 +297,7 @@ export function ProjectModal({ project, isOpen, onClose, isLoading = false }: Pr
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <ExternalLink className="w-5 h-5 mr-2" />
+                    <BookOpen className="w-5 h-5 mr-2" />
                     記事を読む
                   </Link>
                 </Button>
@@ -310,7 +310,7 @@ export function ProjectModal({ project, isOpen, onClose, isLoading = false }: Pr
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <ExternalLink className="w-5 h-5 mr-2" />
+                    <Play className="w-5 h-5 mr-2" />
                     動画を見る
                   </Link>
                 </Button>
