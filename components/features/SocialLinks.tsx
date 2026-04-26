@@ -1,21 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { siGithub, siX, siQiita } from 'simple-icons'
 import { Button } from '@/components/ui/button'
-
-type SocialPlatform = 'github' | 'x' | 'qiita'
-
-const socialIcons: Record<SocialPlatform, typeof siGithub> = {
-  github: siGithub,
-  x: siX,
-  qiita: siQiita,
-}
-
-interface SocialLink {
-  platform: string
-  url: string
-}
+import { SOCIAL_PLATFORM_CONFIG } from '@/lib/social-platforms'
+import type { SocialLink } from '@/types'
 
 interface SocialLinksProps {
   links: SocialLink[]
@@ -25,7 +13,8 @@ export function SocialLinks({ links }: SocialLinksProps) {
   return (
     <div className="flex flex-wrap gap-4">
       {links.map((link) => {
-        const icon = socialIcons[link.platform as SocialPlatform]
+        const config = SOCIAL_PLATFORM_CONFIG[link.platform]
+        if (!config) return null
 
         return (
           <motion.div
@@ -47,10 +36,10 @@ export function SocialLinks({ links }: SocialLinksProps) {
               >
                 <div
                   className="w-5 h-5 flex-shrink-0 [&>svg]:w-full [&>svg]:h-full"
-                  dangerouslySetInnerHTML={{ __html: icon.svg }}
+                  dangerouslySetInnerHTML={{ __html: config.icon.svg }}
                   style={{ fill: 'currentColor' }}
                 />
-                <span className="uppercase">{link.platform}</span>
+                <span>{config.label}</span>
               </a>
             </Button>
           </motion.div>

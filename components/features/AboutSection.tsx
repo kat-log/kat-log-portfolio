@@ -1,22 +1,15 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { siGithub, siX, siQiita } from 'simple-icons'
-import { Profile, SocialPlatform } from '@/types'
+import { Profile } from '@/types'
 // TODO: スキルセクション復活時にコメント解除
 // import { SkillCard } from './SkillCard'
 import { Button } from '@/components/ui/button'
+import { SOCIAL_PLATFORM_CONFIG } from '@/lib/social-platforms'
 
 interface AboutSectionProps {
   profile: Profile
   showAllSkills?: boolean // スキルを全て表示するか、主要なものだけか
-}
-
-// SNSプラットフォームとアイコンのマッピング
-const socialIcons: Partial<Record<SocialPlatform, typeof siGithub>> = {
-  github: siGithub,
-  x: siX,
-  qiita: siQiita,
 }
 
 // コンテナのアニメーション設定
@@ -82,8 +75,8 @@ export function AboutSection({ profile, showAllSkills = false }: AboutSectionPro
           {/* SNSリンク */}
           <div className="flex flex-wrap justify-center gap-3">
             {profile.socialLinks.map((social) => {
-              const icon = socialIcons[social.platform]
-              if (!icon) return null
+              const config = SOCIAL_PLATFORM_CONFIG[social.platform]
+              if (!config) return null
               return (
                 <Button
                   key={social.platform}
@@ -96,15 +89,15 @@ export function AboutSection({ profile, showAllSkills = false }: AboutSectionPro
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`${social.platform} - ${social.username}`}
+                    aria-label={`${config.label} - ${social.username}`}
                   >
                     <div
                       className="h-4 w-4"
-                      dangerouslySetInnerHTML={{ __html: icon.svg }}
+                      dangerouslySetInnerHTML={{ __html: config.icon.svg }}
                       style={{ fill: 'currentColor' }}
                     />
                     <span className="hidden sm:inline">{social.username}</span>
-                    <span className="sm:hidden capitalize">{social.platform}</span>
+                    <span className="sm:hidden">{config.label}</span>
                   </a>
                 </Button>
               )
