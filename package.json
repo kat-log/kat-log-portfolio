@@ -15,7 +15,8 @@
     "test:e2e:headed": "playwright test --headed",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "prepare": "husky"
+    "prepare": "husky",
+    "optimize-images": "bash scripts/optimize-images.sh"
   },
   "dependencies": {
     "@next/third-parties": "^16.1.6",
