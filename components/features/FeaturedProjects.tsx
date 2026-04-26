@@ -178,7 +178,25 @@ export function FeaturedProjects({ projects, onProjectClick }: FeaturedProjectsP
                           href={project.links.demo || project.links.store || '#'}
                           target="_blank"
                           rel="noopener noreferrer"
-                          aria-label="Demo"
+                          aria-label="サイトを見る"
+                        >
+                          <ExternalLink className="h-5 w-5" />
+                        </a>
+                      </Button>
+                    )}
+
+                    {project.links?.lp && (
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        asChild
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <a
+                          href={project.links.lp}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="紹介ページ"
                         >
                           <ExternalLink className="h-5 w-5" />
                         </a>

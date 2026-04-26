@@ -259,7 +259,20 @@ export function ProjectModal({ project, isOpen, onClose, isLoading = false }: Pr
                     rel="noopener noreferrer"
                   >
                     <ExternalLink className="w-5 h-5 mr-2" />
-                    デモを見る
+                    サイトを見る
+                  </Link>
+                </Button>
+              )}
+
+              {project.links.lp && (
+                <Button variant="default" size="lg" asChild>
+                  <Link
+                    href={project.links.lp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <ExternalLink className="w-5 h-5 mr-2" />
+                    紹介ページ
                   </Link>
                 </Button>
               )}
