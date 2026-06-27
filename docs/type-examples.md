@@ -286,12 +286,12 @@ export const projectDataExample: Project = {
   id: "portfolio-site",
   title: "ポートフォリオサイト",
   type: "website",
-  description: "Next.js 15とTailwind CSSで構築したモダンなポートフォリオサイト",
+  description: "Next.js 16とTailwind CSSで構築したモダンなポートフォリオサイト",
   longDescription:
     "最新のWeb技術を活用し、パフォーマンスとユーザー体験を重視して設計されたポートフォリオサイトです。",
   tags: ["frontend", "personal", "opensource"],
   technologies: {
-    frontend: ["Next.js 15", "TypeScript", "Tailwind CSS"],
+    frontend: ["Next.js 16", "TypeScript", "Tailwind CSS"],
     tools: ["Vercel", "GitHub Actions"],
     deploy: ["Vercel"],
   },

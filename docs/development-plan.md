@@ -2,7 +2,7 @@
 
 ## 概要
 
-本ドキュメントは、Next.js 15、TypeScript、Tailwind CSS v3 を使用したポートフォリオサイト構築の開発フェーズとタスクを記載しています。
+本ドキュメントは、Next.js 16、TypeScript、Tailwind CSS v3 を使用したポートフォリオサイト構築の開発フェーズとタスクを記載しています。
 
 ## 開発フェーズ
 
@@ -16,7 +16,7 @@
 
 | タスク ID | タスク                                         | 優先度 | 推定時間 | ステータス | 備考                                            |
 | --------- | ---------------------------------------------- | ------ | -------- | ---------- | ----------------------------------------------- |
-| P1-001    | Next.js 15 プロジェクトの初期化（TypeScript）  | 高     | 1 時間   | ✅ 完了    | `npx create-next-app@latest` で App Router 使用 |
+| P1-001    | Next.js 16 プロジェクトの初期化（TypeScript）  | 高     | 1 時間   | ✅ 完了    | `npx create-next-app@latest` で App Router 使用 |
 | P1-002    | ESLint、Prettier、TypeScript 設定              | 高     | 1 時間   | ✅ 完了    | Next.js ベストプラクティスに従う                |
 | P1-003    | Tailwind CSS v3 のインストール・設定           | 高     | 2 時間   | ✅ 完了    | shadcn/ui互換性のためv3を使用（issue #15対応）                                  |
 | P1-004    | shadcn/ui コンポーネントライブラリ導入         | 高     | 1 時間   | ✅ 完了    | button、card、badge コンポーネント追加完了      |

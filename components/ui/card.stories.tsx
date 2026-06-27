@@ -70,7 +70,7 @@ export const ProjectCardStyle: Story = {
       <div className="h-48 bg-gradient-to-br from-blue-500 to-purple-600" />
       <CardHeader>
         <CardTitle>ポートフォリオサイト</CardTitle>
-        <CardDescription>Next.js 15 で構築したモダンなポートフォリオ</CardDescription>
+        <CardDescription>Next.js 16 で構築したモダンなポートフォリオ</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="flex flex-wrap gap-2">

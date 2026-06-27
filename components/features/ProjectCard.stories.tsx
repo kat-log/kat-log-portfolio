@@ -27,7 +27,7 @@ const sampleProject: Project = {
   title: 'ポートフォリオサイト',
   type: 'website',
   description:
-    'Next.js 15とTypeScript、Tailwind CSSで構築したモダンなポートフォリオサイト。パフォーマンスとアクセシビリティを重視した設計。',
+    'Next.js 16とTypeScript、Tailwind CSSで構築したモダンなポートフォリオサイト。パフォーマンスとアクセシビリティを重視した設計。',
   tags: ['frontend', 'personal'],
   technologies: {
     frontend: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],

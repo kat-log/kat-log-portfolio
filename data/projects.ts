@@ -30,7 +30,7 @@ export const projects: Project[] = [
     title: 'Kat Log ポートフォリオ',
     type: 'website',
     description:
-      'こちらのポートフォリオサイトです。これまでの制作物を紹介しています。Next.js 15・TypeScript・Tailwind CSSで構築し、Vercelで公開しています。',
+      'こちらのポートフォリオサイトです。これまでの制作物を紹介しています。Next.js 16・TypeScript・Tailwind CSSで構築し、Vercelで公開しています。',
     tags: ['frontend', 'personal'],
     technologies: {
       frontend: ['Next.js', 'TypeScript', 'Tailwind CSS'],
