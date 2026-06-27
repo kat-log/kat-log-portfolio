@@ -1,7 +1,7 @@
 # ファイル構造（案）
 
 ```text
-├── app/                    # Next.js 15 App Routerのページ定義
+├── app/                    # Next.js 16 App Routerのページ定義
 │   ├── layout.tsx          # 全体レイアウト（ヘッダー・フッター配置の設計図）
 │   ├── page.tsx            # ホームページ（ヒーロセクション・作品一覧）
 │   ├── about/              # Aboutページディレクトリ

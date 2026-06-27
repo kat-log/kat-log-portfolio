@@ -1,7 +1,7 @@
 # Kat Log ポートフォリオ - Claude 指示書
 
 ## プロジェクト概要
-TypeScript と Tailwind CSS で構築された Next.js 15 ポートフォリオサイト。Web開発プロジェクトを紹介するモダンでパフォーマンス重視の個人ポートフォリオ。
+TypeScript と Tailwind CSS で構築された Next.js 16 ポートフォリオサイト。Web開発プロジェクトを紹介するモダンでパフォーマンス重視の個人ポートフォリオ。
 
 ## パッケージマネージャー
 **重要**: このプロジェクトは `pnpm` を使用します。`npm` は使用しないでください。必ず pnpm コマンドを使用してください。
@@ -22,7 +22,7 @@ pnpm install          # 依存関係インストール
 ```
 
 ## 技術スタック
-- **フレームワーク**: Next.js 15 (App Router)
+- **フレームワーク**: Next.js 16 (App Router)
 - **言語**: TypeScript
 - **スタイリング**: Tailwind CSS v4
 - **デプロイ**: Vercel
@@ -34,7 +34,7 @@ pnpm install          # 依存関係インストール
 
 ## プロジェクト構造
 ```
-app/                  # Next.js 15 App Router ページ
+app/                  # Next.js 16 App Router ページ
 ├── layout.tsx        # ルートレイアウト
 ├── page.tsx          # ホームページ
 └── globals.css       # グローバルスタイル

@@ -4,7 +4,7 @@
 
 ### フレームワーク & 言語
 
-- **Next.js 15** (App Router)
+- **Next.js 16** (App Router)
   - Server Components によるパフォーマンス向上
   - ビルトインの最適化機能
 - **TypeScript**
