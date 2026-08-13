@@ -33,7 +33,7 @@ export default defineConfig({
 
   // 全テスト共通の設定
   use: {
-    // ベースURL（開発サーバー）
+    // ベースURL
     baseURL: 'http://localhost:3000',
 
     // スクリーンショットとトレースの設定
@@ -71,11 +71,17 @@ export default defineConfig({
     },
   ],
 
-  // 開発サーバーの自動起動
+  // テスト対象サーバーの自動起動
+  //
+  // dev サーバーはオンデマンドコンパイルのため、負荷の高い環境では
+  // レスポンスが 30 秒を超えてテストが間欠的にタイムアウトする。
+  // 本番ビルドに対して実行することで安定させ、あわせて本番に近い状態を検証する。
+  // ローカルで `pnpm dev` を起動済みの場合は reuseExistingServer によりそちらを再利用する。
   webServer: {
-    command: 'pnpm dev',
+    command: 'pnpm build && pnpm start',
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
-    timeout: 120 * 1000,
+    // ビルド時間を含むため長めに確保する
+    timeout: 300 * 1000,
   },
 });

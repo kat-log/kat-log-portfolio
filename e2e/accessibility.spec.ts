@@ -1,6 +1,7 @@
 import { test, expect, TestInfo } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import type { Page } from '@playwright/test';
+import { gotoAndWaitForReady } from './helpers';
 
 /**
  * アクセシビリティテスト
@@ -44,8 +45,7 @@ test.describe('アクセシビリティ - axe-core 自動テスト', () => {
   });
 
   test('ホームページがアクセシビリティ基準を満たす', async ({ page }, testInfo) => {
-    await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await gotoAndWaitForReady(page, '/');
 
     const accessibilityScanResults = await createAxeBuilder(page, testInfo).analyze();
 
@@ -53,8 +53,7 @@ test.describe('アクセシビリティ - axe-core 自動テスト', () => {
   });
 
   test('Aboutページがアクセシビリティ基準を満たす', async ({ page }, testInfo) => {
-    await page.goto('/about');
-    await page.waitForLoadState('networkidle');
+    await gotoAndWaitForReady(page, '/about');
 
     const accessibilityScanResults = await createAxeBuilder(page, testInfo).analyze();
 
@@ -62,8 +61,7 @@ test.describe('アクセシビリティ - axe-core 自動テスト', () => {
   });
 
   test('404ページがアクセシビリティ基準を満たす', async ({ page }, testInfo) => {
-    await page.goto('/non-existent-page');
-    await page.waitForLoadState('networkidle');
+    await gotoAndWaitForReady(page, '/non-existent-page');
 
     const accessibilityScanResults = await createAxeBuilder(page, testInfo).analyze();
 
@@ -71,8 +69,7 @@ test.describe('アクセシビリティ - axe-core 自動テスト', () => {
   });
 
   test('ダークモードでアクセシビリティ基準を満たす', async ({ page }, testInfo) => {
-    await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await gotoAndWaitForReady(page, '/');
 
     // テーマ切り替えボタンをクリック
     const themeButton = page.locator('button[aria-label*="theme"], button[aria-label*="ダーク"], button[aria-label*="ライト"]').first();
@@ -88,8 +85,7 @@ test.describe('アクセシビリティ - axe-core 自動テスト', () => {
   });
 
   test('モーダルが開いた状態でアクセシビリティ基準を満たす', async ({ page }, testInfo) => {
-    await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await gotoAndWaitForReady(page, '/');
 
     // プロジェクトセクションまでスクロール
     await page.locator('#projects').scrollIntoViewIfNeeded();
@@ -132,8 +128,7 @@ test.describe('アクセシビリティ - モバイルビュー', () => {
   });
 
   test('モバイルホームページがアクセシビリティ基準を満たす', async ({ page }, testInfo) => {
-    await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await gotoAndWaitForReady(page, '/');
 
     const accessibilityScanResults = await createAxeBuilder(page, testInfo).analyze();
 
@@ -141,8 +136,7 @@ test.describe('アクセシビリティ - モバイルビュー', () => {
   });
 
   test('モバイルメニューが開いた状態でアクセシビリティ基準を満たす', async ({ page }, testInfo) => {
-    await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await gotoAndWaitForReady(page, '/');
 
     // ハンバーガーメニューを開く
     const menuButton = page.locator('button[aria-label*="menu"], button[aria-label*="メニュー"], [data-mobile-menu]').first();
@@ -159,8 +153,7 @@ test.describe('アクセシビリティ - モバイルビュー', () => {
 
 test.describe('キーボードナビゲーション - 詳細テスト', () => {
   test('すべてのインタラクティブ要素にフォーカスできる', async ({ page }) => {
-    await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await gotoAndWaitForReady(page, '/');
 
     // フォーカス可能な要素を取得
     const tabbableSelector = 'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])';
@@ -187,8 +180,7 @@ test.describe('キーボードナビゲーション - 詳細テスト', () => {
   });
 
   test('フォーカスインジケーターが視認可能', async ({ page }) => {
-    await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await gotoAndWaitForReady(page, '/');
 
     // 最初のインタラクティブ要素に直接フォーカス
     const firstInteractive = page.locator('a, button').first();
@@ -215,8 +207,7 @@ test.describe('キーボードナビゲーション - 詳細テスト', () => {
   });
 
   test('Escapeキーでモーダルを閉じられる', async ({ page }) => {
-    await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await gotoAndWaitForReady(page, '/');
 
     // プロジェクトセクションまでスクロール
     await page.locator('#projects').scrollIntoViewIfNeeded();
@@ -243,8 +234,7 @@ test.describe('キーボードナビゲーション - 詳細テスト', () => {
   });
 
   test('モーダル内でフォーカストラップが機能する', async ({ page }) => {
-    await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await gotoAndWaitForReady(page, '/');
 
     // プロジェクトセクションまでスクロール
     await page.locator('#projects').scrollIntoViewIfNeeded();
@@ -286,8 +276,7 @@ test.describe('キーボードナビゲーション - 詳細テスト', () => {
 
 test.describe('スクリーンリーダー対応', () => {
   test('すべての画像にalt属性がある', async ({ page }) => {
-    await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await gotoAndWaitForReady(page, '/');
 
     const imagesWithoutAlt = await page.evaluate(() => {
       const images = document.querySelectorAll('img');
@@ -298,8 +287,7 @@ test.describe('スクリーンリーダー対応', () => {
   });
 
   test('フォーム要素にラベルがある', async ({ page }) => {
-    await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await gotoAndWaitForReady(page, '/');
 
     const inputsWithoutLabel = await page.evaluate(() => {
       const inputs = document.querySelectorAll('input:not([type="hidden"]), textarea, select');
@@ -315,8 +303,7 @@ test.describe('スクリーンリーダー対応', () => {
   });
 
   test('ページに適切な見出し階層がある', async ({ page }) => {
-    await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await gotoAndWaitForReady(page, '/');
 
     const headingIssues = await page.evaluate(() => {
       const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
@@ -347,8 +334,7 @@ test.describe('スクリーンリーダー対応', () => {
   });
 
   test('ランドマークが適切に配置されている', async ({ page }) => {
-    await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await gotoAndWaitForReady(page, '/');
 
     const landmarks = await page.evaluate(() => {
       const results = {
@@ -367,8 +353,7 @@ test.describe('スクリーンリーダー対応', () => {
   });
 
   test('リンクに識別可能なテキストがある', async ({ page }) => {
-    await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await gotoAndWaitForReady(page, '/');
 
     const linksWithoutText = await page.evaluate(() => {
       const links = document.querySelectorAll('a');
@@ -390,8 +375,7 @@ test.describe('スクリーンリーダー対応', () => {
   });
 
   test('ボタンに識別可能なテキストがある', async ({ page }) => {
-    await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await gotoAndWaitForReady(page, '/');
 
     const buttonsWithoutText = await page.evaluate(() => {
       const buttons = document.querySelectorAll('button');
@@ -435,8 +419,7 @@ test.describe('カラーコントラスト', () => {
   });
 
   test('テキストのコントラスト比が十分である', async ({ page }) => {
-    await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await gotoAndWaitForReady(page, '/');
 
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withTags(['wcag2aa'])
@@ -447,8 +430,7 @@ test.describe('カラーコントラスト', () => {
   });
 
   test('ダークモードでもコントラスト比が十分である', async ({ page }) => {
-    await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await gotoAndWaitForReady(page, '/');
 
     // テーマ切り替え
     const themeButton = page.locator('button[aria-label*="theme"], button[aria-label*="ダーク"], button[aria-label*="ライト"]').first();

@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { gotoAndWaitForReady } from './helpers';
 
 test.describe('ナビゲーション', () => {
   test('ホームページからAboutページに遷移できる', async ({ page }) => {
@@ -106,7 +107,9 @@ test.describe('モバイルナビゲーション', () => {
 
 test.describe('キーボードナビゲーション', () => {
   test('Tabキーでナビゲーション要素をフォーカスできる', async ({ page }) => {
-    await page.goto('/');
+    // ハイドレーション前は framer-motion が SSR した tabindex="0" の div が
+    // 残っており、そちらにフォーカスが入ってしまうため準備完了を待つ
+    await gotoAndWaitForReady(page, '/');
 
     // Tabキーを押してフォーカスを移動
     await page.keyboard.press('Tab');
