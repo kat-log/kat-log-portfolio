@@ -51,10 +51,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v7
 
+      # version は package.json の packageManager を単一の情報源として参照する
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
-        with:
-          version: 9
 
       - name: Setup Node.js
         uses: actions/setup-node@v7
@@ -75,10 +74,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v7
 
+      # version は package.json の packageManager を単一の情報源として参照する
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
-        with:
-          version: 9
 
       - name: Setup Node.js
         uses: actions/setup-node@v7
@@ -101,10 +99,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v7
 
+      # version は package.json の packageManager を単一の情報源として参照する
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
-        with:
-          version: 9
 
       - name: Setup Node.js
         uses: actions/setup-node@v7
@@ -137,10 +134,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v7
 
+      # version は package.json の packageManager を単一の情報源として参照する
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
-        with:
-          version: 9
 
       - name: Setup Node.js
         uses: actions/setup-node@v7
@@ -174,10 +170,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v7
 
+      # version は package.json の packageManager を単一の情報源として参照する
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
-        with:
-          version: 9
 
       - name: Setup Node.js
         uses: actions/setup-node@v7

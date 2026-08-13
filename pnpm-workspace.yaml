@@ -1,0 +1,11 @@
+# pnpm の設定ファイル。ワークスペース(モノレポ)定義ではなく設定の置き場所として使う。
+# pnpm 11 以降は package.json の "pnpm" フィールドを読まないため、こちらに置く必要がある。
+# https://pnpm.io/settings
+
+# pnpm 10 以降、依存パッケージの lifecycle script はデフォルトで実行されない。
+# ビルドが必要な依存をここで明示的に許可する。
+onlyBuiltDependencies:
+  - '@sentry/cli' # ビルド時のソースマップアップロード
+  - esbuild # Storybook / Vitest のバンドル
+  - sharp # Next.js の画像最適化
+  - unrs-resolver # eslint-config-next のモジュール解決
