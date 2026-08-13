@@ -26,6 +26,8 @@ jobs:
         with:
           filters: |
             src:
+              # ジョブ定義自体の変更もフルスイートで検証する（外すと未検証のまま全 pass に見える）
+              - '.github/workflows/**'
               - 'app/**'
               - 'components/**'
               - 'data/**'
