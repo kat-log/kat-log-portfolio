@@ -17,11 +17,15 @@ interface ImageLightboxProps {
 export function ImageLightbox({ images, initialIndex, isOpen, onClose }: ImageLightboxProps) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex)
   const [direction, setDirection] = useState(0)
+  const [prevInitialIndex, setPrevInitialIndex] = useState(initialIndex)
 
   // initialIndex が変わったらリセット
-  useEffect(() => {
+  // エフェクトではなくレンダー中に前回値と比較して調整する
+  // https://react.dev/learn/you-might-not-need-an-effect
+  if (prevInitialIndex !== initialIndex) {
+    setPrevInitialIndex(initialIndex)
     setCurrentIndex(initialIndex)
-  }, [initialIndex])
+  }
 
   const hasMultiple = images.length > 1
 
