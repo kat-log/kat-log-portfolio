@@ -6,6 +6,10 @@ import { useTheme } from 'next-themes'
 
 import { Button } from '@/components/ui/button'
 
+const emptySubscribe = () => () => {}
+const getClientSnapshot = () => true
+const getServerSnapshot = () => false
+
 /**
  * ThemeToggle component
  *
@@ -14,13 +18,17 @@ import { Button } from '@/components/ui/button'
  */
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = React.useState(false)
 
   // クライアントサイドでマウントされた後にのみ表示
   // これによりハイドレーションミスマッチを防ぐ
-  React.useEffect(() => {
-    setMounted(true)
-  }, [])
+  // （useTheme は初期レンダー時に localStorage を読むため、SSR の出力と一致しない）
+  // useSyncExternalStore はハイドレーション時にサーバースナップショットを使うため、
+  // useEffect + setState を挟まずに「マウント済みか」を安全に判定できる
+  const mounted = React.useSyncExternalStore(
+    emptySubscribe,
+    getClientSnapshot,
+    getServerSnapshot
+  )
 
   if (!mounted) {
     return (

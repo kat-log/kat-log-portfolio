@@ -1,20 +1,15 @@
 // For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
 import storybook from "eslint-plugin-storybook";
 
-import { FlatCompat } from "@eslint/eslintrc";
-import path from "path";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
+// eslint-config-next 16 は flat config をネイティブに提供するため FlatCompat は不要。
+// core-web-vitals には TypeScript 用の parser/plugin のベースしか含まれないため、
+// typescript-eslint の推奨ルールを得るには typescript も併せて読み込む必要がある。
+import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
+import nextTypeScript from "eslint-config-next/typescript";
 
 const config = [
-  ...compat.extends("next/core-web-vitals"),
-  ...compat.extends("next/typescript"),
+  ...nextCoreWebVitals,
+  ...nextTypeScript,
   {
     ignores: [
       ".next/**",
