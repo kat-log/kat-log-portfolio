@@ -14,11 +14,17 @@ onlyBuiltDependencies:
 # 親パッケージが古いバージョンを固定していて、直接依存の更新だけでは解消できないもののみを列挙する。
 # 上流が範囲を広げたら、対応する行を削除すること。
 overrides:
-  # next が postcss@8.4.31 を完全固定している (GHSA: ReDoS ほか)
+  # next が postcss を完全固定している (16.3.5 時点で 8.5.23 / GHSA: ReDoS ほか)
   next>postcss: ^8.5.26
-  # next の optionalDependencies が sharp@^0.34.5 で、libvips 由来の CVE が未修正
-  # CVE-2026-33327 / 33328 / 35590 / 35591
-  next>sharp: ^0.35.3
   # @lhci/cli (Lighthouse CI, dev のみ) が古い tmp / uuid を引き込む
   tmp: ^0.2.6
   uuid: ^11.1.1
+  # ajv (webpack>schema-utils 経由, Storybook dev のみ) が fast-uri@^3.0.1 で、
+  # host confusion / SSRF が 3.1.6 未満で未修正
+  # CVE-2026-75931 / 75975 / 75899 / 76172
+  fast-uri: ^3.1.8
+  # js-yaml の ReDoS (CVE-2026-84375)。eslint が 4.x、@lhci/cli が 3.x を引き込む
+  js-yaml@3: ^3.15.2
+  js-yaml@4: ^4.3.2
+  # @lhci/cli>express が古い qs を引き込む (CVE-2026-82562 / 82417)
+  qs: ^6.16.0
