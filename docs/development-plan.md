@@ -238,6 +238,12 @@
   - 環境変数（NEXT_PUBLIC_GA_ID）による測定ID管理
   - Vercel Analyticsと併用（パフォーマンス計測 + ユーザー行動分析）
 
+- 🚧 **Google Tag Manager (GTM) 導入** (2026-10-29 コード対応)
+  - `@next/third-parties/google`のGoogleTagManagerコンポーネント導入
+  - 環境変数（NEXT_PUBLIC_GTM_ID）設定時はGTM経由でGA4を配信し、直書きのGA4は読み込まない（二重計測防止）
+  - NEXT_PUBLIC_GTM_ID未設定時は従来どおりGA4を直接読み込む
+  - 残作業: GTMコンテナ作成・GA4タグ設定・Vercelへの環境変数設定
+
 ### 将来の拡張機能（MVP 後）
 
 - EmailJS を使ったお問い合わせフォーム
