@@ -6,7 +6,12 @@ import { Footer } from '@/components/layout/Footer'
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
 import { PageTransition } from '@/components/providers/PageTransition'
 import { Analytics } from '@vercel/analytics/react'
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
+
+// GTM が設定されていれば GA4 は GTM 経由で配信する（二重計測を防ぐため直書きの GA4 は読み込まない）
+// GTM 未設定の環境では従来どおり GA4 を直接読み込む
+const gtmId = process.env.NEXT_PUBLIC_GTM_ID
+const gaId = process.env.NEXT_PUBLIC_GA_ID
 
 // 英語フォント（Inter）の設定
 const inter = Inter({
@@ -103,8 +108,10 @@ export default function RootLayout({
           <Footer />
         </ThemeProvider>
         <Analytics />
-        {process.env.NEXT_PUBLIC_GA_ID && (
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        {gtmId ? (
+          <GoogleTagManager gtmId={gtmId} />
+        ) : (
+          gaId && <GoogleAnalytics gaId={gaId} />
         )}
       </body>
     </html>
