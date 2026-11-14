@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Mail } from "lucide-react";
 import { profile } from "@/data/profile";
+import { SimpleIcon } from "@/components/ui/simple-icon";
 import { SOCIAL_PLATFORM_CONFIG } from "@/lib/social-platforms";
 
 export function Footer() {
@@ -47,10 +48,9 @@ export function Footer() {
                   aria-label={config.label}
                   title={config.label}
                 >
-                  <div
+                  <SimpleIcon
+                    icon={config.icon}
                     className="w-6 h-6"
-                    dangerouslySetInnerHTML={{ __html: config.icon.svg }}
-                    style={{ fill: 'currentColor' }}
                   />
                 </Link>
               );
