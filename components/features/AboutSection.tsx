@@ -6,6 +6,7 @@ import { Profile } from '@/types'
 // import { SkillCard } from './SkillCard'
 import { Button } from '@/components/ui/button'
 import { SOCIAL_PLATFORM_CONFIG } from '@/lib/social-platforms'
+import { SimpleIcon } from '@/components/ui/simple-icon'
 
 interface AboutSectionProps {
   profile: Profile
@@ -91,10 +92,9 @@ export function AboutSection({ profile, showAllSkills = false }: AboutSectionPro
                     rel="noopener noreferrer"
                     aria-label={`${config.label} - ${social.username}`}
                   >
-                    <div
+                    <SimpleIcon
+                      icon={config.icon}
                       className="h-4 w-4"
-                      dangerouslySetInnerHTML={{ __html: config.icon.svg }}
-                      style={{ fill: 'currentColor' }}
                     />
                     <span className="hidden sm:inline">{social.username}</span>
                     <span className="sm:hidden">{config.label}</span>
